@@ -13,27 +13,27 @@ module.exports = {
 
     name : { type: 'string' },
 
-    inn: { type: 'string', defaultTo: '' },
+    inn: { type: 'string', defaultsTo: '' },
 
-    ogrn: { type: 'string', defaultTo: '' },
+    ogrn: { type: 'string', defaultsTo: '' },
 
-    okpo: { type: 'string', defaultTo: '' },
+    okpo: { type: 'string', defaultsTo: '' },
 
-    address: { type: 'string', defaultTo: '' },
+    address: { type: 'string', defaultsTo: '' },
 
-    kpp: { type: 'string', defaultTo: '' },
+    kpp: { type: 'string', defaultsTo: '' },
 
-    phone: { type: 'string', defaultTo: '' },
+    phone: { type: 'string', defaultsTo: '' },
 
-    email: { type: 'string', defaultTo: '' },
+    email: { type: 'string', defaultsTo: '' },
 
-    bank_account_nr: { type: 'string', defaultTo: '' },
+    bank_account_nr: { type: 'string', defaultsTo: '' },
 
-    bank_name: { type: 'string', defaultTo: '' },
+    bank_name: { type: 'string', defaultsTo: '' },
 
-    bank_bik: { type: 'string', defaultTo: '' },
+    bank_bik: { type: 'string', defaultsTo: '' },
 
-    bank_corr_account_nr: { type: 'string', defaultTo: '' },
+    bank_corr_account_nr: { type: 'string', defaultsTo: '' },
 
   }
 };

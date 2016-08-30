@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
   <head>
     <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
 
@@ -29,13 +29,162 @@
     -->
 
     <!--STYLES-->
-    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/sb-admin.css">
+    <link rel="stylesheet" href="/components/font-awesome/css/font-awesome.min.css">
     <!--STYLES END-->
   </head>
 
   <body>
-    <%- body %>
 
+
+  <div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">Админка</a>
+      </div>
+      <!-- Top Menu Items -->
+      <ul class="nav navbar-right top-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+          <ul class="dropdown-menu message-dropdown">
+            <li class="message-preview">
+              <a href="#">
+                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                  <div class="media-body">
+                    <h5 class="media-heading"><strong>John Smith</strong>
+                    </h5>
+                    <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="message-preview">
+              <a href="#">
+                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                  <div class="media-body">
+                    <h5 class="media-heading"><strong>John Smith</strong>
+                    </h5>
+                    <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="message-preview">
+              <a href="#">
+                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                  <div class="media-body">
+                    <h5 class="media-heading"><strong>John Smith</strong>
+                    </h5>
+                    <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="message-footer">
+              <a href="#">Read All New Messages</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+          <ul class="dropdown-menu alert-dropdown">
+            <li>
+              <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+            </li>
+            <li>
+              <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+            </li>
+            <li>
+              <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+            </li>
+            <li>
+              <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+            </li>
+            <li>
+              <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+            </li>
+            <li>
+              <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">View All</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+          <li>
+            <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Отчеты</a>
+          </li>
+          <li class="">
+            <a href="/assets/add"><i class="fa fa-fw fa-edit"></i> Расходы/доходы</a>
+          </li>
+          <li>
+            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-table"></i> Справочники <i class="fa fa-fw fa-caret-down"></i></a>
+            <ul id="demo" class="collapse">
+              <li class="">
+                <a class="fa-file" href="/contragents/index">Контрагенты</a>
+              </li>
+              <li class="">
+                <a href="/units/index">Подразделения</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="page-wrapper" ng-view ></div>
+
+    </div>
+    <!-- /#page-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
 
 
     <!--
@@ -60,7 +209,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+    <script type="text/javascript" src="/jst.js"></script>
     <!--TEMPLATES END-->
 
 
@@ -89,6 +238,26 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/components/jquery/dist/jquery.min.js"></script>
+    <script src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/components/angular/angular.js"></script>
+    <script src="/components/angular-route/angular-route.js"></script>
+    <script src="/components/angular-resource/angular-resource.js"></script>
+    <script src="/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!--SCRIPTS END-->
+  <script src="/js/app.module.js"></script>
+  <script src="/js/app.config.js"></script>
+
+  <script src="/js/core/core.module.js"></script>
+  <script src="/js/core/checkmark/checkmark.filter.js"></script>
+  <!--<script src="/js/core/phone/phone.module.js"></script>-->
+  <!--<script src="/js/core/phone/phone.service.js"></script>-->
+  <script src="/js/core/contragent/contragent.module.js"></script>
+  <script src="/js/core/contragent/contragent.service.js"></script>
+  <script src="/js/contragent-list/contragent-list.module.js"></script>
+  <script src="/js/contragent-list/contragent-list.component.js"></script>
+  <script src="/js/contragent-detail/contragent-detail.module.js"></script>
+  <script src="/js/contragent-detail/contragent-detail.component.js"></script>
+
   </body>
 </html>

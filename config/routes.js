@@ -36,7 +36,11 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  // 'get /contragent/index': 'ContragentController.index',
+  // 'get /contragents/index': 'ContragentController.index',
+  //
+  //
+  // 'get /units/index': 'UnitController.index',
+
 
   /***************************************************************************
   *                                                                          *

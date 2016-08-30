@@ -17,7 +17,12 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/**/*.css'
+  'styles/**/*.css',
+
+  //bower manually added CSS dependencies
+  'components/bootstrap/dist/css/bootstrap.min.css',
+  'css/sb-admin.css',
+  'components/font-awesome/css/font-awesome.min.css'
 ];
 
 
@@ -29,11 +34,25 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
-  'js/dependencies/**/*.js',
+  //bower
+  'components/jquery/dist/jquery.min.js',
+  'components/bootstrap/dist/js/bootstrap.min.js',
+  'components/angular/angular.js',
+  'components/angular-route/angular-route.js',
+  'components/angular-resource/angular-resource.js',
+  'components/angular-bootstrap/ui-bootstrap-tpls.js',
+
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/**/*.js'
+  // 'js/**/*.js',
+  // 'js/service/*.js',
+  // 'js/core/**/*.js',
+  // 'js/contragent/contragent.module.js',
+  // 'js/contragent/contragent.component.js',
+  //
+  // 'js/app.module.js',
+  // 'js/app.config.js',
 ];
 
 
@@ -47,7 +66,7 @@ var jsFilesToInject = [
 // templates get spit out to the same file.  Be sure and check out `tasks/README.md`
 // for information on customizing and installing new tasks.
 var templateFilesToInject = [
-  'templates/**/*.html'
+  'templates/**/*.html',
 ];
 
 

@@ -1,0 +1,19 @@
+{
+  "name": "afinance",
+  "authors": [
+    "asv"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "directory": "assets/components",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
