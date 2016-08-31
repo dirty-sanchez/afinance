@@ -178,7 +178,9 @@
       <!-- /.navbar-collapse -->
     </nav>
 
-    <div id="page-wrapper" ng-view ></div>
+    <div id="page-wrapper">
+      <ui-view></ui-view>
+    </div>
 
     </div>
     <!-- /#page-wrapper -->
@@ -209,7 +211,7 @@
     -->
 
     <!--TEMPLATES-->
-    <script type="text/javascript" src="/jst.js"></script>
+    
     <!--TEMPLATES END-->
 
 
@@ -238,26 +240,27 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/components/jquery/dist/jquery.min.js"></script>
-    <script src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/components/angular/angular.js"></script>
-    <script src="/components/angular-route/angular-route.js"></script>
-    <script src="/components/angular-resource/angular-resource.js"></script>
-    <script src="/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!--SCRIPTS END-->
-  <script src="/js/app.module.js"></script>
-  <script src="/js/app.config.js"></script>
+  <script src='components/jquery/dist/jquery.js'></script>
+  <script src='components/bootstrap/dist/js/bootstrap.min.js'></script>
+  <script src='components/angular/angular.js'></script>
+  <script src='components/angular-ui-router/release/angular-ui-router.js'></script>
+  <script src='components/angular-resource/angular-resource.js'></script>
+  <script src='components/angular-bootstrap/ui-bootstrap-tpls.js'></script>
 
-  <script src="/js/core/core.module.js"></script>
-  <script src="/js/core/checkmark/checkmark.filter.js"></script>
-  <!--<script src="/js/core/phone/phone.module.js"></script>-->
-  <!--<script src="/js/core/phone/phone.service.js"></script>-->
+  <script src="/js/app.js"></script>
+
   <script src="/js/core/contragent/contragent.module.js"></script>
   <script src="/js/core/contragent/contragent.service.js"></script>
-  <script src="/js/contragent-list/contragent-list.module.js"></script>
-  <script src="/js/contragent-list/contragent-list.component.js"></script>
-  <script src="/js/contragent-detail/contragent-detail.module.js"></script>
-  <script src="/js/contragent-detail/contragent-detail.component.js"></script>
+  <script src="/js/core/core.module.js"></script>
+
+  <!--<script src="/js/core/phone/phone.module.js"></script>-->
+  <!--<script src="/js/core/phone/phone.service.js"></script>-->
+
+  <script src="/js/contragents/contragent.controller.js"></script>
+  <!--<script src="/js/contragent-list/contragent-list.component.js"></script>-->
+  <!--<script src="/js/contragent-detail/contragent-detail.module.js"></script>-->
+  <!--<script src="/js/contragent-detail/contragent-detail.component.js"></script>-->
 
   </body>
 </html>

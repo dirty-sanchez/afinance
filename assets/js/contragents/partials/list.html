@@ -11,7 +11,7 @@
           <i class="fa fa-file"></i> Контрагенты
         </li>
       </ol>
-      <a href="/contragents/add" type="button" class="btn btn-success">Добавить</a>
+      <a ui-sref="contragents-new" href="/contragents/add" type="button" class="btn btn-success">Добавить</a>
       <div class="table-responsive">
         <table class="table table-hover table-striped">
           <thead>
@@ -24,12 +24,13 @@
           </tr>
           </thead>
           <tbody>
-          <tr ng-repeat="contragent in $ctrl.items">
-            <td><a href="#!/contragents/{{contragent.id}}"">{{contragent.name}}</a></td>
+          <tr ng-repeat="contragent in this.items">
+            <td><a ui-sref="contragents-edit({ id: contragent.id })">{{contragent.name}}</a></td>
             <td>{{contragent.inn}}</td>
             <td>{{contragent.ogrn}}</td>
             <td>{{contragent.phone}}</td>
             <td>{{contragent.email}}</td>
+            <td><a class="btn btn-danger"  ng-click="delete(contragent)">Удалить</a></td>
           </tr>
           </tbody>
         </table>

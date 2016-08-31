@@ -35,12 +35,6 @@ var jsFilesToInject = [
 
   // Dependencies like jQuery, or Angular are brought in here
   //bower
-  'components/jquery/dist/jquery.min.js',
-  'components/bootstrap/dist/js/bootstrap.min.js',
-  'components/angular/angular.js',
-  'components/angular-route/angular-route.js',
-  'components/angular-resource/angular-resource.js',
-  'components/angular-bootstrap/ui-bootstrap-tpls.js',
 
 
   // All of the rest of your client-side js files

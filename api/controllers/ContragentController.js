@@ -1,5 +1,7 @@
+"use strict";
+
 module.exports = {
-  // index: function(req, res) {
-  //   return res.view();
-  // }
+  hi: function (req, resp) {
+    resp.json('hi');
+  }
 };

@@ -8,15 +8,15 @@
           <i class="fa fa-table"></i>  Справочники
         </li>
         <li>
-          <i class="fa fa-file"></i> <a href="#!/contragents"> Контрагенты</a>
+          <i class="fa fa-file"></i> <a ui-sref="contragents"> Контрагенты</a>
         </li>
         <li class="active">
-          <i class="fa fa-file"></i> Добавить
+          <i class="fa fa-file"></i> {{item.name}}
         </li>
       </ol>
 
-      <form role="form" ng-submit="addContragent()">
-        <div ng-include="'partials/_contragent-form.html'"></div>
+      <form role="form" ng-submit="update()">
+        <div ng-include="'js/contragents/partials/_contragent-form.html'"></div>
       </form>
   </div>
 </div>

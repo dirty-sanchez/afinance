@@ -11,14 +11,12 @@
           <i class="fa fa-file"></i> <a href="#!/contragents"> Контрагенты</a>
         </li>
         <li class="active">
-          <i class="fa fa-file"></i> {{$ctrl.item.name}}
+          <i class="fa fa-file"></i> Добавить
         </li>
       </ol>
 
-      <form role="form" ng-submit="updateContragent()">
-        <div ng-include="'partials/_contragent-form.html'"></div>
+      <form role="form" ng-submit="add()">
+        <div ng-include="'js/contragents/partials/_contragent-form.html'"></div>
       </form>
-      <button class="btn btn-success" ng-click="save(item)">Сохранить</button>
-      <a href="#" onclick="javascript:history.back()" type="button" class="btn btn-warning">Отмена</a>
   </div>
 </div>
