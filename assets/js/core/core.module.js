@@ -1,4 +1,4 @@
 'use strict';
 
 // Define the `core` module
-angular.module('core', ['core.contragent']);
+angular.module('core', ['core.contragent', 'core.division']);

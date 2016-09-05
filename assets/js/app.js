@@ -9,9 +9,11 @@ angular.module('app', [,
   'core',
   'app.contragents',
   'app.contragentgroups',
+  'app.divisions',
+  'app.divisiongroups'
 ]);
 
-angular.module('app').config(function($stateProvider,$httpProvider){
+angular.module('app').config(function($stateProvider,$httpProvider) {
   $stateProvider
       .state('contragents-list',{
         url:'/contragents',
@@ -28,6 +30,7 @@ angular.module('app').config(function($stateProvider,$httpProvider){
         templateUrl:'/js/contragents/partials/new.html',
         controller:'ContragentAddController'
       })
+      /////////////////////////////////////
       /// contragent groups routes
       .state('contragentgroups-list',{
           url:'/contragentgroups',
@@ -44,7 +47,33 @@ angular.module('app').config(function($stateProvider,$httpProvider){
           templateUrl:'/js/contragentgroups/partials/new.html',
           controller:'ContragentGroupAddController'
       })
-})
+    ////////////////////////////////////////////
+    ///
+    ////////////////////////////////////////////
+    ///  documents
+    //.state('documents-list',{
+    //  url:'/documents',
+    //  templateUrl:'/js/documents/partials/list.html',
+    //  controller:'DocumentListController'
+    //})
+    //.state('documents-edit',{
+    //  url:'/documents/:id/edit',
+    //  templateUrl:'/js/documents/partials/edit.html',
+    //  controller:'DocumentEditController'
+    //})
+    //.state('documents-new',{
+    //  url:'/documents/new',
+    //  templateUrl:'/js/documents/partials/new.html',
+    //  controller:'DocumentAddController'
+    //})
+    //////////////////////////////////////////////
+    ///// reports
+    //.state('reports',{
+    //  url:'/contragentgroups',
+    //  templateUrl:'/js/contragentgroups/partials/list.html',
+    //  controller:'ContragentGroupListController'
+    //})
+  })
     .run(function($state){
       $state.go('contragentgroups-list');
     })

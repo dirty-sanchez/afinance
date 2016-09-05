@@ -13,7 +13,7 @@ angular.module('app.contragents', [])
 
     $scope.update = function() {
       $scope.item.$update(function() {
-        $state.go('contragents.list');
+        $state.go('contragents-list');
       });
     };
 
@@ -27,7 +27,7 @@ angular.module('app.contragents', [])
       $scope.item = new Contragent();
       $scope.add = function() {
       $scope.item.$save(function() {
-        $state.go(RETURN_TO_STATE);
+        $state.go('contragents-list');
       });
     }
   })

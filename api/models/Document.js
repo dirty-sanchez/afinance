@@ -1,5 +1,5 @@
 /**
- * ContragentGroup.js
+ * Document.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -10,11 +10,21 @@ module.exports = {
   attributes: {
     id : { type: 'integer', autoIncrement: true, unique: true, primaryKey: true },
 
-    name : { type: 'string' },
+    number: {type: 'integer', autoIncrement: true },
 
-    contragents: {
-      model: 'contragent',
-      via: 'group'
+    division: {
+      model: 'division',
+    },
+
+    // one-to-many group association
+    positions: {
+      collection: 'position',
+    },
+
+    // one-to-many group association
+    type: {
+      model: 'documenttype',
+      defaultsTo: 1
     }
   }
 };

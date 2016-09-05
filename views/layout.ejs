@@ -156,25 +156,25 @@
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
           <li>
-            <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Отчеты</a>
+            <a href ui-sref="reports"><i class="fa fa-fw fa-bar-chart-o"></i> Отчеты</a>
           </li>
           <li class="">
-            <a href="/assets/add"><i class="fa fa-fw fa-edit"></i> Расходы/доходы</a>
+            <a href ui-sref="documents-list"><i class="fa fa-fw fa-edit"></i> Расходы/доходы</a>
           </li>
           <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-table"></i> Справочники <i class="fa fa-fw fa-caret-down"></i></a>
+            <a href="#" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-table"></i> Справочники <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="demo" class="collapse">
-              <li class="">
-                <a class="fa-file" ui-sref="contragents-list">Контрагенты</a>
+              <li ui-sref-active="active">
+                <a href class="fa-file" ui-sref="contragents-list">Контрагенты</a>
+              </li>
+              <li ui-sref-active="active">
+                <a href class="fa-file" ui-sref="contragentgroups-list">Группы контрагентов</a>
+              </li>
+              <li ui-sref-active="active">
+                <a href ui-sref="divisions-list">Подразделения</a>
               </li>
               <li class="">
-                <a class="fa-file" ui-sref="contragentgroups-list">Группы контрагентов</a>
-              </li>
-              <li class="">
-                <a ui-sref="divisions-list">Подразделения</a>
-              </li>
-              <li class="">
-                <a class="fa-file" ui-sref="divisiongroups-list">Группы подразделений</a>
+                <a href class="fa-file" ui-sref="divisiongroups-list">Группы подразделений</a>
               </li>
             </ul>
           </li>
@@ -255,8 +255,15 @@
 
   <script src="/js/app.js"></script>
 
+  <script src="/js/divisions/controller.js"></script>
+  <script src="/js/divisions/divisions.routes.js"></script>
+  <script src="/js/divisiongroups/controller.js"> </script>
+  <script src="/js/divisiongroups/divisiongroups.routes.js"></script>
+
   <script src="/js/core/contragent/contragent.module.js"></script>
   <script src="/js/core/contragent/contragent.service.js"></script>
+  <script src="/js/core/division/division.module.js"></script>
+  <script src="/js/core/division/division.service.js"></script>
   <script src="/js/core/core.module.js"></script>
 
   <script src="/js/contragents/controller.js"></script>

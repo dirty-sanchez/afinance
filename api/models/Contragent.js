@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-    id : { type: 'integer', autoIncrement: true, unique: true },
+    id : { type: 'integer', autoIncrement: true, unique: true, primaryKey: true },
 
     name : { type: 'string' },
 
@@ -35,6 +35,10 @@ module.exports = {
 
     bank_corr_account_nr: { type: 'string', defaultsTo: '' },
 
+    group: {
+      model: 'contragentgroup',
+      defaultsTo: 1
+    }
   }
 };
 
