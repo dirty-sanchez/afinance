@@ -4,7 +4,27 @@
 </div>
 <div class="form-group">
   <label>Группа(ы)</label>
-  СЮДА КОНТРОЛ  УПРАВЛЕНИЯ ГРУППАМИ
+  <div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th style="width: 50px"></th>
+          <th>Название группы</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="group in this.groups">
+            <td><input type="checkbox" checklist-model="item.groups" checklist-value="group.id"/></td>
+            <td>{{group.name}}</td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+
+
+  <!--<label ng-repeat="group in this.groups">-->
+    <!--<input type="checkbox" checklist-model="item.groups" checklist-value="group.id"/> {{group.name}} <br/>-->
+  <!--</label>-->
 </div>
 
 <div class="form-group">

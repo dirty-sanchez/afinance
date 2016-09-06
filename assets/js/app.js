@@ -6,6 +6,7 @@
 
 angular.module('app', [,
   'ui.router',
+  'checklist-model',
   'core',
   'app.contragents',
   'app.contragentgroups',
