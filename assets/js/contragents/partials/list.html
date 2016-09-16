@@ -21,6 +21,7 @@
             <th>ОГРН</th>
             <th>Телефон</th>
             <th>EMail</th>
+            <th>Группа</th>
             <th></th>
           </tr>
           </thead>
@@ -31,6 +32,7 @@
             <td>{{contragent.ogrn}}</td>
             <td>{{contragent.phone}}</td>
             <td>{{contragent.email}}</td>
+            <td>{{contragent.group.name}}</td>
             <td><a class="btn btn-danger"  ng-click="delete(contragent)">Удалить</a></td>
           </tr>
           </tbody>

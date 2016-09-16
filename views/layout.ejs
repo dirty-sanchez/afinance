@@ -156,24 +156,43 @@
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
           <li>
-            <a href ui-sref="reports"><i class="fa fa-fw fa-bar-chart-o"></i> Отчеты</a>
+            <a href="#" data-toggle="collapse" data-target="#reports"><i class="fa fa-fw fa-bar-chart-o"></i> Отчеты</a>
+            <ul id="reports" class="collapse">
+              <li>
+                <a href class="fa-file" ui-sref="summary-report">Сводный отчет</a>
+              </li>
+              <li>
+                <a href class="fa-file" ui-sref="detailed-report">Детальный отчет</a>
+              </li>
+            </ul>
           </li>
           <li class="">
             <a href ui-sref="documents-list"><i class="fa fa-fw fa-edit"></i> Расходы/доходы</a>
+            <ul class="collapse">
+              <li>
+                <a href class="fa-file" ui-sref="documents-add">Добавить документ</a>
+              </li>
+              <li>
+                <a href class="fa-file" ui-sref="documents-list">Документы</a>
+              </li>
+            </ul>
           </li>
           <li>
             <a href="#" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-table"></i> Справочники <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="demo" class="collapse">
-              <li ui-sref-active="active">
+              <li>
+                <a href class="fa-file" ui-sref="documenttypes-list">Типы документов</a>
+              </li>
+              <li>
                 <a href class="fa-file" ui-sref="contragents-list">Контрагенты</a>
               </li>
-              <li ui-sref-active="active">
+              <li>
                 <a href class="fa-file" ui-sref="contragentgroups-list">Группы контрагентов</a>
               </li>
-              <li ui-sref-active="active">
+              <li>
                 <a href ui-sref="divisions-list">Подразделения</a>
               </li>
-              <li class="">
+              <li>
                 <a href class="fa-file" ui-sref="divisiongroups-list">Группы подразделений</a>
               </li>
             </ul>
@@ -256,16 +275,36 @@
 
   <script src="/js/app.js"></script>
 
+  <!--divisions module-->
   <script src="/js/divisions/controller.js"></script>
   <script src="/js/divisions/divisions.routes.js"></script>
+
+  <!--division groups module-->
   <script src="/js/divisiongroups/controller.js"> </script>
   <script src="/js/divisiongroups/divisiongroups.routes.js"></script>
 
+  <!--core & dependencies-->
   <script src="/js/core/contragent/contragent.module.js"></script>
   <script src="/js/core/contragent/contragent.service.js"></script>
   <script src="/js/core/division/division.module.js"></script>
   <script src="/js/core/division/division.service.js"></script>
+  <script src="/js/core/position/module.js"></script>
+  <script src="/js/core/position/service.js"></script>
+  <script src="/js/core/document/document.module.js"></script>
+  <script src="/js/core/document/document.service.js"></script>
   <script src="/js/core/core.module.js"></script>
+
+  <!--document types module-->
+  <script src="/js/documenttypes/controller.js"> </script>
+  <script src="/js/documenttypes/documenttypes.routes.js"></script>
+
+  <!--document module-->
+  <script src="/js/documents/controller.js"> </script>
+  <script src="/js/documents/routes.js"></script>
+
+  <!--document module-->
+  <script src="/js/reports/controller.js"> </script>
+  <script src="/js/reports/routes.js"></script>
 
   <script src="/js/contragents/controller.js"></script>
 

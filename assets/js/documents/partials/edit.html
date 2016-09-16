@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Расходы\Доходы</h1>
+      <ol class="breadcrumb">
+        <li>
+          <i class="fa fa-file"></i> <a ui-sref="documents-list"> Редактирование документа</a>
+        </li>
+        <li class="active">
+          <i class="fa fa-file"></i> {{item.name||"<БЕЗ ИМЕНИ>"}}
+        </li>
+      </ol>
+
+      <form role="form" class="form-horizontal" ng-submit="update()">
+        <div ng-include="'/js/documents/partials/_form.html'"></div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,11 @@
 'use strict';
 
 angular.
-  module('core.division').
-  factory('Division', ['$resource',
+  module('core.document').
+  factory('Document', ['$resource',
     function($resource) {
       return $resource(
-        '/division/:id',
+        '/document/:id',
         { id: '@id' },
         {
           update: {
@@ -15,10 +15,10 @@ angular.
       );
     }
   ])
-    .factory('DivisionGroup', ['$resource',
+    .factory('DocumentType', ['$resource',
       function($resource) {
         return $resource(
-          '/divisiongroup/:id',
+          '/documenttype/:id',
           { id: '@id' },
           {
             update: {

@@ -13,7 +13,7 @@ angular.module('app.divisions', [])
     $scope.groups = DivisionGroup.query();
     $scope.update = function() {
       $scope.item.$update(function() {
-        $state.go('divisions.list');
+        $state.go('divisions-list');
       });
     };
 
@@ -23,7 +23,8 @@ angular.module('app.divisions', [])
 
     $scope.load();
   })
-  .controller('DivisionAddController', function ($scope, $state, $stateParams, $rootScope, Division) {
+  .controller('DivisionAddController', function ($scope, $state, $stateParams, $rootScope, Division, DivisionGroup  ) {
+    $scope.groups = DivisionGroup.query();
       $scope.item = new Division();
       $scope.add = function() {
       $scope.item.$save(function() {

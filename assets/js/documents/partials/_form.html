@@ -1,0 +1,76 @@
+<div class="form-group">
+  <label class="col-md-1 control-label">Номер документа</label>
+  <div class="col-md-1">
+    <input class="form-control" placeholder="Номер" ng-model="item.number" >
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-1 control-label">Тип документа</label>
+  <div class="col-md-5">
+    <select ng-options="doctype.name for doctype in this.available_doctypes track by doctype.id" ng-model="item.documenttype"></select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-1 control-label">Подразделение</label>
+  <div class="col-md-5">
+    <select ng-options="division.name for division in this.available_divisions track by division.id" ng-model="item.division"></select>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <div class="col-md-offset-1">
+  <div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th>Статья</th>
+          <th>Тип</th>
+          <th style="width: 50px;">Значение</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="position in item.positions">
+          <td>
+            <input class="form-control" placeholder="Наименование позиции" ng-model="position.name" />
+          </td>
+          <td>
+            <select ng-model="position.position_type">
+              <option value="cost" selected>Расход</option>
+              <option value="income">Доход</option>
+            </select>
+          <td>
+            <input class="form-control" placeholder="Значение" ng-model="position.value" />
+          </td>
+          <td><a class="btn btn-danger" ng-click="delete_position(position)">Удалить</a></td>
+        </tr>
+        <tr>
+          <td>
+            <input class="form-control" placeholder="Наименование позиции" ng-model="new_position_name" />
+          </td>
+          <td>
+            <select ng-model="new_position_position_type">
+              <option value="cost" selected>Расход</option>
+              <option value="income">Доход</option>
+            </select>
+          <td>
+            <input class="form-control" placeholder="Значение" ng-model="new_position_value" />
+          </td>
+          <td><a class="btn btn-success" ng-click="add_position()">Добавить</a></td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+    <a class="btn btn-success" ng-click="add_position()">Добавить</a>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-md-offset-1">
+    <input type="submit" class="btn btn-success" value="Сохранить" />
+    <a href="#" onclick="javascript:history.back()" type="button" class="btn btn-warning">Отмена</a>
+  </div>
+</div>

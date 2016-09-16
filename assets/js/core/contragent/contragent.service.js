@@ -5,7 +5,7 @@ angular.
   factory('Contragent', ['$resource',
     function($resource) {
       return $resource(
-        'http://127.0.0.1:1337/contragent/:id',
+        '/contragent/:id',
         { id: '@id' },
         {
           update: {
@@ -18,7 +18,7 @@ angular.
     .factory('ContragentGroup', ['$resource',
       function($resource) {
         return $resource(
-          'http://127.0.0.1:1337/contragentgroup/:id',
+          '/contragentgroup/:id',
           { id: '@id' },
           {
             update: {

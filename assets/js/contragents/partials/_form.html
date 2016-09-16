@@ -1,44 +1,68 @@
 <div class="form-group">
-  <label>Название</label>
-  <input class="form-control" placeholder="Название" ng-model="item.name" >
+  <label class="col-md-1 control-label">Название</label>
+  <div class="col-md-5">
+    <input class="form-control" placeholder="Название" ng-model="item.name" >
+  </div>
 </div>
 <div class="form-group">
-  <label>ИНН</label>
-  <input class="form-control" placeholder="ИНН" ng-model="item.inn">
+  <label class="col-md-1 control-label">ИНН</label>
+  <div class="col-md-5">
+    <input class="form-control" placeholder="ИНН" ng-model="item.inn">
+  </div>
 </div>
 
 <div class="form-group">
-  <label>ОГРН</label>
-  <input class="form-control" placeholder="ОГРН" ng-model="item.ogrn">
+  <label class="col-md-1 control-label">ОГРН</label>
+  <div class="col-md-5">
+    <input class="form-control" placeholder="ОГРН" ng-model="item.ogrn">
+  </div>
 </div>
 
 <div class="form-group">
-  <label>ОКПО</label>
-  <input class="form-control" placeholder="ОКПО">
+  <label class="col-md-1 control-label">ОКПО</label>
+  <div class="col-md-5">
+    <input class="form-control" placeholder="ОКПО" ng-model="item.okpo">
+  </div>
 </div>
 
 <div class="form-group">
-  <label>Адрес</label>
-  <textarea class="form-control" rows="3"></textarea>
+  <label class="col-md-1 control-label">Адрес</label>
+  <div class="col-md-5">
+    <textarea class="form-control" rows="3" ng-attr-placeholder="Адрес" ng-model="item.address"></textarea>
+  </div>
 </div>
 
 <div class="form-group">
-  <label>КПП</label>
-  <input class="form-control" placeholder="КПП">
+  <label class="col-md-1 control-label">КПП</label>
+  <div class="col-md-5">
+    <input class="form-control" placeholder="КПП" ng-model="item.kpp">
+  </div>
 </div>
 
 <div class="form-group">
-  <label>Телефон</label>
-  <input class="form-control" placeholder="Телефон">
+  <label class="col-md-1 control-label">Телефон</label>
+  <div class="col-md-5">
+    <input class="form-control" placeholder="Телефон" ng-model="item.phone">
+  </div>
 </div>
 
 <div class="form-group">
-  <label>Эл.почта</label>
-  <input class="form-control" placeholder="Эл.почта">
+  <label class="col-md-1 control-label">Эл.почта</label>
+  <div class="col-md-5">
+    <input class="form-control" placeholder="Эл.почта" ng-model="item.email">
+  </div>
 </div>
 
 <div class="form-group">
-  <input type="submit" class="btn btn-success" value="Сохранить" />
-  <a href="#" onclick="javascript:history.back()" type="button" class="btn btn-warning">Отмена</a>
+  <label class="col-md-1 control-label">Группа</label>
+  <div class="col-md-5">
+    <select ng-options="group.name for group in this.availableGroups track by group.id" ng-model="item.group"></select>
+  </div>
 </div>
 
+<div class="form-group">
+  <div class="col-md-offset-1">
+    <input type="submit" class="btn btn-success" value="Сохранить" />
+    <a href="#" onclick="javascript:history.back()" type="button" class="btn btn-warning">Отмена</a>
+  </div>
+</div>

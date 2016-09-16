@@ -11,7 +11,10 @@ angular.module('app', [,
   'app.contragents',
   'app.contragentgroups',
   'app.divisions',
-  'app.divisiongroups'
+  'app.divisiongroups',
+  'app.documenttypes',
+  'app.documents',
+  'app.reports'
 ]);
 
 angular.module('app').config(function($stateProvider,$httpProvider) {
