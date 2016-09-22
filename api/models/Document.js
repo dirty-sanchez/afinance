@@ -19,10 +19,11 @@ module.exports = {
     // one-to-many group association
     positions: {
       collection: 'position',
+      via: 'document'
     },
 
     // one-to-many group association
-    type: {
+    documenttype: {
       model: 'documenttype',
       defaultsTo: 1
     }

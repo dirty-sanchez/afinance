@@ -49,22 +49,21 @@
         </tr>
         <tr>
           <td>
-            <input class="form-control" placeholder="Наименование позиции" ng-model="new_position_name" />
+            <input class="form-control" placeholder="Наименование позиции" ng-model="new_position.name" />
           </td>
           <td>
-            <select ng-model="new_position_position_type">
+            <select ng-model="new_position.position_type">
               <option value="cost" selected>Расход</option>
               <option value="income">Доход</option>
             </select>
           <td>
-            <input class="form-control" placeholder="Значение" ng-model="new_position_value" />
+            <input class="form-control" placeholder="Значение" ng-model="new_position.value" />
           </td>
-          <td><a class="btn btn-success" ng-click="add_position()">Добавить</a></td>
+          <td><a class="btn btn-success" ng-click="add_position(new_position)">Добавить</a></td>
         </tr>
         </tbody>
     </table>
   </div>
-    <a class="btn btn-success" ng-click="add_position()">Добавить</a>
   </div>
 </div>
 

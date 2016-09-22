@@ -36,6 +36,7 @@
   "author": "anonymous node/sails user",
   "license": "",
   "devDependencies": {
+    "node-inspector": "^0.12.8",
     "sails-disk": "^0.10.10",
     "sails-hook-autoreload": "^0.13.2"
   }

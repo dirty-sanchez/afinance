@@ -14,7 +14,7 @@ module.exports = {
 
     documents: {
       collection: 'document',
-      via: 'type'
+      via: 'documenttype'
     }
   }
 };

@@ -13,7 +13,11 @@ module.exports = {
 
     value: { type: 'string', required: true },
 
-    position_type: { type: 'string', enum: ['income', 'cost' ]}
+    position_type: { type: 'string', enum: ['income', 'cost' ]},
+
+    document: {
+      model: 'document'
+    }
   }
 };
 
