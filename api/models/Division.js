@@ -10,7 +10,11 @@ module.exports = {
   attributes: {
     id : { type: 'integer', autoIncrement: true, unique: true,  primaryKey: true },
 
-    name : { type: 'string' },
+    name : { type: 'string', required: true},
+
+    mileage: { type: 'integer', defaultsTo: 0},
+
+    isDeleted: { type: 'boolean', defaultsTo: false},
 
     // many-to-many group association
     groups : {

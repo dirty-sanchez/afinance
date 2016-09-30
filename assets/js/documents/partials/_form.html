@@ -1,19 +1,19 @@
 <div class="form-group">
-  <label class="col-md-1 control-label">Номер документа</label>
+  <label class="col-md-2 control-label">Номер документа</label>
   <div class="col-md-1">
     <input class="form-control" placeholder="Номер" ng-model="item.number" >
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-1 control-label">Тип документа</label>
+  <label class="col-md-2 control-label">Тип документа</label>
   <div class="col-md-5">
     <select ng-options="doctype.name for doctype in this.available_doctypes track by doctype.id" ng-model="item.documenttype"></select>
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-1 control-label">Подразделение</label>
+  <label class="col-md-2 control-label">Подразделение</label>
   <div class="col-md-5">
     <select ng-options="division.name for division in this.available_divisions track by division.id" ng-model="item.division"></select>
   </div>
@@ -21,7 +21,7 @@
 
 
 <div class="form-group">
-  <div class="col-md-offset-1">
+  <div class="col-md-offset-2">
   <div class="table-responsive">
     <table class="table table-hover table-striped">
         <thead>

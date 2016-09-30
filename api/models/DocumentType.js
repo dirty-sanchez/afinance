@@ -15,7 +15,10 @@ module.exports = {
     documents: {
       collection: 'document',
       via: 'documenttype'
-    }
+    },
+
+    // расходный или приходный документ
+    costType: { type: 'string', enum: ['income', 'cost' ]},
   }
 };
 

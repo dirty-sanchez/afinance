@@ -36,7 +36,7 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  // 'get /contragents/index': 'ContragentController.index',
+  'get /report/:id/data': 'DivisionDetailsReportController.index',
   //
   //
   // 'get /units/index': 'UnitController.index',

@@ -56,7 +56,7 @@ angular.module('app.documents', [])
 
     $scope.add_position = function(newPosition) {
       initNewPosition();
-      $scope.item.positions.push({id: newPosition.id, name: newPosition.name, position_type: newPosition.position_type, value: newPosition.value});
+      $scope.item.positions.push({name: newPosition.name, position_type: newPosition.position_type, value: newPosition.value});
     };
 
     $scope.delete_position = (positionToDelete) => {
@@ -67,6 +67,10 @@ angular.module('app.documents', [])
     };
 
     $scope.add = function() {
+      if ($scope.new_position.name !== '' && $scope.new_position.value !== '') {
+        $scope.item.positions.push({name: $scope.new_position.name, position_type: $scope.new_position.position_type, value: $scope.new_position.value});
+      }
+
       $scope.item.$save(function() {
         $state.go('documents-list');
       });

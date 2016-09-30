@@ -70,9 +70,6 @@ module.exports = {
         var userInput = req.body;
         var promisesList = [];
         var dtoForUpdate = me._makeDocumentDtoForUpdate(oldInstance, userInput);
-        var positionsToAdd;
-        var positionsIdToDelete;
-        var positionsToUpdate;
         var positionsDtoInfo = me._makePositionsAddDeleteUpdateInfo(oldInstance, userInput);
 
         if (positionsDtoInfo.positionsIdToDelete.length > 0) {

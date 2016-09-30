@@ -8,16 +8,12 @@
 module.exports = {
 
   attributes: {
+    id : { type: 'integer', autoIncrement: true, unique: true, primaryKey: true },
 
     name: { type: 'string', required: true},
 
-    value: { type: 'string', required: true },
-
-    position_type: { type: 'string', enum: ['income', 'cost' ]},
-
-    document: {
-      model: 'document'
+    group: {
+      model: 'positiongroup',
     }
   }
 };
-
