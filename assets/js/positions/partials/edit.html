@@ -2,22 +2,21 @@
   <!-- Page Heading -->
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Группа подразделений "{{item.name}}"</h1>
+      <h1 class="page-header">Редактирование позиции документа</h1>
       <ol class="breadcrumb">
         <li>
           <i class="fa fa-table"></i>  Справочники
         </li>
         <li>
-          <i class="fa fa-file"></i> <a ui-sref="divisiongroups-list"> Группы подразделений</a>
+          <i class="fa fa-file"></i> <a ui-sref="positions-list"> Спиок позиции</a>
         </li>
         <li class="active">
           <i class="fa fa-file"></i> {{item.name}}
         </li>
       </ol>
 
-      <form role="form" ng-submit="update()">
-        <div ng-include="'js/divisiongroups/partials/_form.html'"></div>
+      <form role="form" ng-submit="update()" class="form-horizontal">
+        <div ng-include="'/js/positions/partials/_form.html'"></div>
       </form>
-    </div>
   </div>
 </div>

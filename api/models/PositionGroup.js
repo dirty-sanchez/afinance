@@ -12,6 +12,8 @@ module.exports = {
 
     name : { type: 'string' },
 
+    isDeleted: { type: 'boolean', defaultsTo: false },
+
     positions: {
       collection: 'position',
       via: 'group'

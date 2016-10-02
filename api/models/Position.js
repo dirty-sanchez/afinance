@@ -12,6 +12,8 @@ module.exports = {
 
     name: { type: 'string', required: true},
 
+    isDeleted: { type: 'boolean', defaultsTo: false },
+
     group: {
       model: 'positiongroup',
     }

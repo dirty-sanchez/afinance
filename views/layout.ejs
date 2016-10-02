@@ -181,6 +181,12 @@
             <a href="#" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-table"></i> Справочники <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="demo" class="collapse">
               <li>
+                <a href class="fa-file" ui-sref="positiongroups-list">Группы позиций документа</a>
+              </li>
+              <li>
+                <a href class="fa-file" ui-sref="positions-list">Позиции документа</a>
+              </li>
+              <li>
                 <a href class="fa-file" ui-sref="documenttypes-list">Типы документов</a>
               </li>
               <li>
@@ -277,11 +283,11 @@
 
   <!--divisions module-->
   <script src="/js/divisions/controller.js"></script>
-  <script src="/js/divisions/divisions.routes.js"></script>
+  <script src="/js/divisions/routes.js"></script>
 
   <!--division groups module-->
   <script src="/js/divisiongroups/controller.js"> </script>
-  <script src="/js/divisiongroups/divisiongroups.routes.js"></script>
+  <script src="/js/divisiongroups/routes.js"></script>
 
   <!--core & dependencies-->
   <script src="/js/core/contragent/contragent.module.js"></script>
@@ -307,6 +313,16 @@
   <!--document module-->
   <script src="/js/reports/controller.js"> </script>
   <script src="/js/reports/routes.js"></script>
+
+  <!--positions module-->
+  <script src="/js/positions/controller.js"> </script>
+  <script src="/js/positions/routes.js"></script>
+
+  <!--position groups module-->
+  <script src="/js/positiongroups/controller.js"> </script>
+  <script src="/js/positiongroups/routes.js"></script>
+
+
 
   <script src="/js/contragents/controller.js"></script>
 

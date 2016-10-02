@@ -14,6 +14,8 @@ angular.module('app', [,
   'app.divisiongroups',
   'app.documenttypes',
   'app.documents',
+  'app.positions',
+  'app.positiongroups',
   'app.reports'
 ]);
 
