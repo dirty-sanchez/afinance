@@ -1,3 +1,4 @@
+"use strict";
 /**
  * DocumentController
  *
@@ -41,14 +42,24 @@ module.exports = {
     var positionsToAdd = userInput.positions
       .filter((position) => position.id === NEW_ID)
       .map((positionUsersInput) => {
-        return {name: positionUsersInput.name, position_type: positionUsersInput.position_type, value: positionUsersInput.value}
+        return {
+          position: positionUsersInput.position,
+          piecesCount: positionUsersInput.piecesCount,
+          pricePerPiece: positionUsersInput.pricePerPiece,
+          price: positionUsersInput.price
+        }
       });
     oldInstance.positions.forEach((oldPosition) => {
       var positionToUpdate = userInput.positions.find((positionToFind) => positionToFind.id === oldPosition.id);
       if (positionToUpdate !== undefined) {
         positionsToUpdate.push({
           id: oldPosition.id,
-          dtoForUpdate: {name: positionToUpdate.name, position_type: positionToUpdate.position_type, value: positionToUpdate.value}
+          dtoForUpdate: {
+            position: positionToUpdate.position,
+            piecesCount: positionToUpdate.piecesCount,
+            pricePerPiece: positionToUpdate.pricePerPiece,
+            price: positionToUpdate.price
+          }
         });
       } else {
         positionsIdToDelete.push(oldPosition.id);
@@ -63,7 +74,6 @@ module.exports = {
   },
 
   update: function(req, res) {
-    "use strict";
     var me = this;
     Document.findOne(req.param('id')).populate('positions')
       .then((oldInstance) => {
@@ -73,7 +83,7 @@ module.exports = {
         var positionsDtoInfo = me._makePositionsAddDeleteUpdateInfo(oldInstance, userInput);
 
         if (positionsDtoInfo.positionsIdToDelete.length > 0) {
-          promisesList.push(Position.destroy({id: positionsDtoInfo.positionsIdToDelete}));
+          promisesList.push(PositionDocument.destroy({id: positionsDtoInfo.positionsIdToDelete}));
         }
 
         if (positionsDtoInfo.positionsToUpdate.length > 0) {
@@ -87,11 +97,16 @@ module.exports = {
           promisesList.push(oldInstance.save());
         }
 
-        Promise.all(promisesList).then(() => {
-          Document.update({id: oldInstance.id}, dtoForUpdate).then(() => {
-            return res.ok('updated');
+        Promise.all(promisesList)
+          .then(() => {
+            return Document.update({id: oldInstance.id}, dtoForUpdate).then(() => {
+              return res.ok('updated');
+            });
+          })
+          .catch((err) => {
+            return res.status(422).send(err);
           });
-        })
     });
-  }
+  },
+
 };

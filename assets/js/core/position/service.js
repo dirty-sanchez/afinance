@@ -7,7 +7,7 @@ angular.
     function($resource) {
       return $resource(
         '/position/:id',
-        { id: '@id' },
+        { id: '@id', idDeleted: '@isDeleted' },
         {
           update: {
             method: 'PUT'

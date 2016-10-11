@@ -19,6 +19,12 @@
   </div>
 </div>
 
+<div class="form-group">
+  <label class="col-md-2 control-label">Пробег</label>
+  <div class="col-md-1">
+    <input class="form-control" placeholder="Пробег" ng-model="item.division.mileage" />
+  </div>
+</div>
 
 <div class="form-group">
   <div class="col-md-offset-2">
@@ -27,38 +33,55 @@
         <thead>
         <tr>
           <th>Статья</th>
-          <th>Тип</th>
-          <th style="width: 50px;">Значение</th>
-          <th></th>
+          <th style="width: 5%;">Количество</th>
+          <th style="width: 5%;">Ед.Изм.</th>
+          <th style="width: 10%;">Цена за шт.</th>
+          <th style="width: 10%;">Итого</th>
+          <th style="width: 5%;"></th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="position in item.positions">
+        <tr ng-repeat="positionDocument in item.positions">
+
           <td>
-            <input class="form-control" placeholder="Наименование позиции" ng-model="position.name" />
+            <select ng-options="position.id as position.name for position in this.available_positions" ng-model="positionDocument.position"></select>
           </td>
+
           <td>
-            <select ng-model="position.position_type">
-              <option value="cost" selected>Расход</option>
-              <option value="income">Доход</option>
-            </select>
-          <td>
-            <input class="form-control" placeholder="Значение" ng-model="position.value" />
+            <input class="form-control" placeholder="Количество" ng-model="positionDocument.piecesCount" ng-change="recountByQuantity(positionDocument)" />
           </td>
-          <td><a class="btn btn-danger" ng-click="delete_position(position)">Удалить</a></td>
+
+          <td>
+            <input disabled class="form-control" placeholder="" value="шт." />
+          </td>
+
+          <td>
+            <input class="form-control" placeholder="Цена за единицу" ng-model="positionDocument.pricePerPiece" ng-change="recountByPiecePrice(positionDocument)"/>
+          </td>
+
+          <td>
+            <input class="form-control" placeholder="Итого цена" ng-model="positionDocument.price" ng-change="recountByPrice(positionDocument)" />
+          </td>
+
+          <td><a class="btn btn-danger" ng-click="delete_position(positionDocument)">Удалить</a></td>
         </tr>
         <tr>
           <td>
-            <input class="form-control" placeholder="Наименование позиции" ng-model="new_position.name" />
+            <select ng-options="position.id as position.name for position in this.available_positions" ng-model="new_position.positionId"></select>
           </td>
           <td>
-            <select ng-model="new_position.position_type">
-              <option value="cost" selected>Расход</option>
-              <option value="income">Доход</option>
-            </select>
-          <td>
-            <input class="form-control" placeholder="Значение" ng-model="new_position.value" />
+            <input class="form-control" placeholder="Количество" ng-model="new_position.piecesCount" ng-change="recountByQuantity(new_position)"/>
           </td>
+          <td>
+            <input disabled class="form-control" placeholder="" value="шт." />
+          </td>
+          <td>
+            <input class="form-control" placeholder="Цена за единицу" ng-model="new_position.pricePerPiece" ng-change="recountByPiecePrice(new_position)" />
+          </td>
+          <td>
+            <input class="form-control" placeholder="Итого цена" ng-model="new_position.price" ng-change="recountByPrice(new_position)" />
+          </td>
+
           <td><a class="btn btn-success" ng-click="add_position(new_position)">Добавить</a></td>
         </tr>
         </tbody>

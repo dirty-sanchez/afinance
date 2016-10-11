@@ -11,12 +11,12 @@ angular.module('app.documents').config(
       .state('documents-edit', {
         url: '/documents/:id/edit',
         templateUrl: '/js/documents/partials/edit.html',
-        controller: 'DocumentEditController'
+        controller: 'DocumentAddEditController'
       })
       .state('documents-new', {
         url: '/documents/new',
-        templateUrl: '/js/documents/partials/new.html',
-        controller: 'DocumentAddController'
+        templateUrl: '/js/documents/partials/edit.html',
+        controller: 'DocumentAddEditController'
       })
     }
 );

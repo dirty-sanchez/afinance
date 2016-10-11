@@ -2,7 +2,7 @@
 
 angular.module('app.positions', [])
   .controller('PositionListController', function($scope, $state, $window, Position) {
-    $scope.items = Position.query();
+    $scope.items = Position.query({isDeleted: false});
     $scope.delete = function(item) {
        item.$delete(function() {
           $scope.items = Position.query();
