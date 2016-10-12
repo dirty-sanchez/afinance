@@ -8,14 +8,14 @@
           <i class="fa fa-table"></i>  Справочники
         </li>
         <li>
-          <i class="fa fa-file"></i> <a ui-sref="positionggroups-list"> Список групп позиций</a>
+          <i class="fa fa-file"></i> <a ui-sref="positiongroups-list"> Список групп позиций</a>
         </li>
         <li class="active">
           <i class="fa fa-file"></i> {{item.name}}
         </li>
       </ol>
 
-      <form role="form" ng-submit="update()">
+      <form role="form" class="form-horizontal" ng-submit="update()">
         <div ng-include="'js/positiongroups/partials/_form.html'"></div>
       </form>
     </div>
