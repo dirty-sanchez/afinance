@@ -16,7 +16,7 @@ module.exports = {
 
     documents: {
       collection: 'document',
-      via: 'documenttype'
+      via: 'documentType'
     },
 
     // расходный или приходный документ

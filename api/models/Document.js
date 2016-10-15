@@ -23,7 +23,7 @@ module.exports = {
     },
 
     // one-to-many group association
-    documenttype: {
+    documentType: {
       model: 'documenttype',
       defaultsTo: 1
     }
