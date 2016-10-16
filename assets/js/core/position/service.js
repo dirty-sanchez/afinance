@@ -2,7 +2,6 @@
 
 angular.
   module('core.position')
-  .factory('DocumentPosition')
   .factory('Position', ['$resource',
     function($resource) {
       return $resource(

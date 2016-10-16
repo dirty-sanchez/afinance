@@ -27,8 +27,8 @@ module.exports = {
       res.division = userInput.division.id;
     }
 
-    if (oldInstance.documenttype !== userInput.documenttype.id) {
-      res.documenttype = userInput.documenttype.id;
+    if (oldInstance.documentType !== userInput.documentType.id) {
+      res.documentType = userInput.documentType.id;
     }
 
     return res;

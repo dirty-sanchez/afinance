@@ -54,6 +54,7 @@ angular.module('app.documents', [])
 
     function tryAddNewIfNotEmpty(positions, newPosition) {
       if (newPosition.id !== 0 && parseInt(newPosition.piecesCount, 10) !== 0
+        && parseInt(newPosition.pricePerPiece, 10) !== 0
         && parseFloat(newPosition.pricePerPiece) > 0) {
         positions.push({
           id: 'new_position',
@@ -80,7 +81,9 @@ angular.module('app.documents', [])
 
     function add() {
       tryAddNewIfNotEmpty($scope.item.positions, $scope.new_position);
-
+      $item.positions.map((item) => {
+        return {position: item.position, piecesCount: item.piecesCount, pricePerPiece: item.pricePerPiece, price: item.price};
+      });
       $scope.item.$save(function() {
         $state.go('documents-list');
       });
