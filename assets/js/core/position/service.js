@@ -6,7 +6,7 @@ angular.
     function($resource) {
       return $resource(
         '/position/:id',
-        { id: '@id', idDeleted: '@isDeleted' },
+        { id: '@id', isDeleted: '@isDeleted' },
         {
           update: {
             method: 'PUT'
@@ -19,7 +19,7 @@ angular.
     function($resource) {
       return $resource(
         '/positiongroup/:id',
-        { id: '@id', idDeleted: '@isDeleted' },
+        { id: '@id', isDeleted: '@isDeleted' },
         {
           update: {
             method: 'PUT'

@@ -38,29 +38,27 @@ var self = {
 				Document.create([{
 					number: 1,
 					division: 1,
-					positions: [
-						{position: 1, piecesCount: 1, pricePerPiece: 1250, price: 1250},
-						{position: 2, piecesCount: 1, pricePerPiece: 2520, price: 2520},
-					],
-					documentType: listOfDocumentTypes[0].id
+					documentType: 1
 				}, {
 					number: 2,
 					division: 3,
-					positions: [
-						{position: 3, piecesCount: 1, pricePerPiece: 2010, price: 2010},
-						{position: 1, piecesCount: 1, pricePerPiece: 10000, price: 10000},
-					],
-					documentType: listOfDocumentTypes[1].idk
+					documentType: 2
 				}, {
 					number: 3,
 					division: 4,
-					positions: [
-						{position: 5, piecesCount: 1, pricePerPiece: 120000, price: 120000},
-						{position: 6, piecesCount: 1, pricePerPiece: 32000, price: 32500},
-					],
-					documentType: listOfDocumentTypes[4].id
+					documentType: 4
 				}])
-					.exec(console.log);
+					.then((listOfDocs) => {
+						PositionDocument.create([
+							{position: 1, piecesCount: 1, pricePerPiece: 1250, price: 1250, document: 1},
+							{position: 2, piecesCount: 1, pricePerPiece: 2520, price: 2520, document: 1},
+							{position: 3, piecesCount: 1, pricePerPiece: 2010, price: 2010, document: 2},
+							{position: 1, piecesCount: 1, pricePerPiece: 10000, price: 10000, document: 2},
+							{position: 5, piecesCount: 1, pricePerPiece: 120000, price: 120000, document: 3},
+							{position: 6, piecesCount: 1, pricePerPiece: 32000, price: 32500, document: 3},
+						])
+							.exec(console.log)
+					});
 			});
 	},
 

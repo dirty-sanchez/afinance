@@ -5,7 +5,8 @@ angular.
   .factory('DetailsReport', ['$resource',
     function($resource) {
     return $resource(
-      '/report/1/data'
+      '/report/1/data',
+      {dateFrom: '@dateFrom', dateTo: '@dateTo', groupBy: '@groupBy'}
     );
   }
   ])

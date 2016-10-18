@@ -11,20 +11,10 @@
           <i class="fa fa-file"></i> Детальный отчет
         </li>
       </ol>
-      <form role="form" class="form-horizontal" ng-submit="fetchData()">
-        <div class="form-group">
-          <label class="col-md-2 control-label">Дата с</label>
-          <div class="col-md-1">
-            <input class="form-control" placeholder="дата" ng-model="item.filter.dateFrom" >
-          </div>
-          <label class="col-md-2 control-label">по</label>
-          <div class="col-md-1">
-            <input class="form-control" placeholder="дата" ng-model="item.filter.dateTo" >
-          </div>
-        </div>
-        <input type="submit" class="button" />
+      <form role="form" class="form-horizontal" ng-submit="fetchData(filter)">
+        <div ng-include="'/js/reports/partials/_form.html'"></div>
       </form>
-      report content here will be
+
       <div ng-repeat="divisionData in data">
         <div>{{divisionData.divisionInfo.name}}</div>
         <div ng-repeat="position in divisionData.positions">

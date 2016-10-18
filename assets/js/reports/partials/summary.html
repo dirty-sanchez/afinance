@@ -11,7 +11,11 @@
           <i class="fa fa-file"></i> Сводный отчет
         </li>
       </ol>
-      тело формы
+
+      <form role="form" ng-submit="fetchData()">
+        <div ng-include="'/js/divisions/partials/_form.html'"></div>
+      </form>
+
     </div>
   </div>
   <!-- /.row -->
