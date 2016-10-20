@@ -2,9 +2,10 @@
 var self = {
 	makePositons: function() {
 		PositionGroup.create([
-			{name: 'ГСМ', costtype: 'cost', positions: [{name: 'ДТ'}, {name: 'АИ80'}]},
-			{name: 'Ремонт', costtype: 'cost', positions: [{name: 'Запчасти'}, {name: 'Аренда бокса'}]},
-			{name: 'Оплата договоров', costtype: 'income', positions: [{name: 'Оплата по договору№1'}, {name: 'Оплата по договору №2'}]},
+			{name: 'ГСМ', costType: 'cost', positions: [{name: 'ДТ'}, {name: 'АИ80'}]},
+			{name: 'Ремонт', costType: 'cost', positions: [{name: 'Запчасти'}, {name: 'Аренда бокса'}]},
+			{name: 'Оплата договоров', costType: 'income', positions: [{name: 'Оплата по договору№1'}, {name: 'Оплата по договору №2'}]},
+			{name: 'Группа №1 [Удалена]', costType: 'income', isDeleted: true, positions: [{name: 'позиция №1' ,isDeleted: true}]},
 		]).exec(console.log);
 	},
 
@@ -36,15 +37,23 @@ var self = {
 			]).then((listOfDocumentTypes) => {
 				"use strict";
 				Document.create([{
+					createdAt: new Date('2016-09-30 19:55:00'),
 					number: 1,
 					division: 1,
 					documentType: 1
 				}, {
+					createdAt: new Date('2016-10-10 12:00:00'),
 					number: 2,
+					division: 1,
+					documentType: 1
+				}, {
+					createdAt: new Date('2016-10-11 12:00:00'),
+					number: 3,
 					division: 3,
 					documentType: 2
 				}, {
-					number: 3,
+					createdAt: new Date('2016-10-12 12:00:00'),
+					number: 4,
 					division: 4,
 					documentType: 4
 				}])
@@ -56,6 +65,7 @@ var self = {
 							{position: 1, piecesCount: 1, pricePerPiece: 10000, price: 10000, document: 2},
 							{position: 5, piecesCount: 1, pricePerPiece: 120000, price: 120000, document: 3},
 							{position: 6, piecesCount: 1, pricePerPiece: 32000, price: 32500, document: 3},
+							{position: 7, piecesCount: 1, pricePerPiece: 1111, price: 1111, document: 3},
 						])
 							.exec(console.log)
 					});

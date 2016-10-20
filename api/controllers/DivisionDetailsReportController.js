@@ -1,3 +1,4 @@
+"use strict";
 /**
  * DivisionDetailsReportController
  *
@@ -6,15 +7,26 @@
  */
 
 module.exports = {
-
   index: (req, res) => {
-    Document.query('select doc.id, pos.name, posgroup.name, doc.createdAt, sum(posdoc.price) \
+    var now = new Date();
+    var filter = FilterService._makeFilter(req);
+
+    console.dir(filter);
+
+    Document.query('select date_format(doc.createdAt, $3) as date, \
+      posgroup.costType as costType, \
+      pos.name, \
+      posgroup.name as gr, \
+      sum(posdoc.price) as value, \
+      count(posdoc.id) as cnt \
     from document as doc \
       inner join positiondocument as posdoc on (doc.id = posdoc.document) \
       inner join position as pos on (posdoc.position = pos.id) \
       inner join positiongroup as posgroup on (posgroup.id = pos.group) \
-      where doc.id in (1,34) \
-      group by pos.name',
+      where doc.createdAt between $1 and $2 \
+    group by date, costType, pos.id \
+    order by date',
+      [filter.dateFrom.toISOString(), filter.dateTo.toISOString(), filter.groupByAsQueryParam()],
       function (err, queryData) {
         console.dir(queryData);
         res.json(queryData);
