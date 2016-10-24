@@ -15,12 +15,20 @@
         <div ng-include="'/js/reports/partials/_form.html'"></div>
       </form>
 
-      <div ng-repeat="divisionData in data">
-        <div>{{divisionData.divisionInfo.name}}</div>
-        <div ng-repeat="position in divisionData.positions">
-          <div>positions {{position.name}}: {{position.value}}</div>
-        </div>
-      </div>
+      <table class="table table-hover table-striped" ng-if="this.report !== undefined">
+        <thead>
+          <tr>
+            <th></th>
+            <th ng-repeat="column in this.report.columnsInfo">{{ column.label }}</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="rowInfo in this.report.rowsInfo">
+          <td>{{ rowInfo.label }}</td>
+          <td ng-repeat="column in this.report.columnsInfo">{{  rowInfo.values[column.id] || 0 }}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

@@ -6,7 +6,8 @@ angular.
     function($resource) {
     return $resource(
       '/report/1/data',
-      {dateFrom: '@dateFrom', dateTo: '@dateTo', groupBy: '@groupBy'}
+      {dateFrom: '@dateFrom', dateTo: '@dateTo', groupBy: '@groupBy'},
+      {'query':  {method:'GET', isArray: true}}
     );
   }
   ])

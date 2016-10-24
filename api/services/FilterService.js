@@ -11,7 +11,7 @@ module.exports = {
       dateTo: null,
       groupBy: 'day',
       groupByAsQueryParam: () => {
-        switch (this.groupBy) {
+        switch (filter.groupBy) {
           case 'year':
             return '%Y';
           case 'month':
@@ -19,6 +19,19 @@ module.exports = {
           default:
             return '%Y-%m-%d';
         }
+      },
+      incDate: (currentDate) => {
+        var res = new Date(currentDate);
+        switch (filter.groupBy) {
+          case 'year':
+            return new Date(currentDate.getFullYear() + 1);
+          case 'month':
+            res.setMonth(currentDate.getMonth() + 1);
+            return res;
+        }
+
+        res.setDate(currentDate.getDate() + 1);
+        return res;
       }
     };
     var dateFrom, dateTo, groupBy;

@@ -6,6 +6,13 @@
 </div>
 
 <div class="form-group">
+  <label class="col-md-2 control-label">Создан</label>
+  <div class="col-md-1">
+    <input class="form-control" disabled ng-model="item.createdAt" >
+  </div>
+</div>
+
+<div class="form-group">
   <label class="col-md-2 control-label">Тип документа</label>
   <div class="col-md-5">
     <select ng-options="doctype.name for doctype in this.available_doctypes track by doctype.id" ng-model="item.documentType"></select>

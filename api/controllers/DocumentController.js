@@ -109,4 +109,33 @@ module.exports = {
     });
   },
 
+  create: function(req, res) {
+    var me = this;
+    Document.create({
+      division: req.body.division.id,
+      documentType: req.body.documentType.id
+    })
+      .then((doc) => {
+        var positions = req.body.positions.map((posData) => {
+          return {
+            position: posData.position,
+            piecesCount: posData.piecesCount,
+            pricePerPiece: posData.pricePerPiece,
+            price: posData.price,
+            document: doc.id
+          };
+        });
+
+        PositionDocument.create(positions)
+          .then((positionsDoc) => {
+            return res.created(doc);
+          })
+          .catch((err) => {
+            return res.status(422).send(err);
+          });
+      })
+      .catch((err) => {
+        return res.status(422).send(err);
+      });
+  }
 };

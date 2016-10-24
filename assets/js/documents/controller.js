@@ -11,7 +11,9 @@ angular.module('app.documents', [])
   })
   .controller('DocumentAddEditController', function($scope, $state, $stateParams, Document, DocumentType, Division, Position) {
     var me = this;
-    $scope.item = $state.current.name === 'documents-new' ? new Document({positions: []}) : Document.get({ id: $stateParams.id });
+    $scope.item = ($state.current.name === 'documents-new') ?
+      new Document({positions: [], createdAt: new Date()}) :
+      Document.get({ id: $stateParams.id });
     $scope.available_doctypes = DocumentType.query();
     $scope.available_divisions = Division.query();
     $scope.available_positions = Position.query({isDeleted: false});
@@ -81,7 +83,7 @@ angular.module('app.documents', [])
 
     function add() {
       tryAddNewIfNotEmpty($scope.item.positions, $scope.new_position);
-      $item.positions.map((item) => {
+      $scope.item.positions = $scope.item.positions.map((item) => {
         return {position: item.position, piecesCount: item.piecesCount, pricePerPiece: item.pricePerPiece, price: item.price};
       });
       $scope.item.$save(function() {
