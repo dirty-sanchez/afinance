@@ -28,7 +28,7 @@
             <td><a ui-sref="documents-edit({ id: item.id })">{{item.number || "<БЕЗ НОМЕРА>"}}</a></td>
             <td><a ui-sref="documents-edit({ id: item.id })">{{item.documentType.name || "<БЕЗ ИМЕНИ>"}}</a></td>
             <td><a ui-sref="divisions-edit({ id: item.division.id })">{{item.division.name || '<БЕЗ ИМЕНИ>'}}</a></td>
-            <td>{{item.updatedAt}}</td>
+            <td>{{item.updatedAt | date: 'HH:mm:ss dd.MM.yy'}}</td>
             <td><a class="btn btn-danger"  ng-click="delete(item)">Удалить</a></td>
           </tr>
           </tbody>

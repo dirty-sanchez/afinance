@@ -2,20 +2,25 @@
 
 angular.module('app.documents', [])
   .controller('DocumentListController', function($scope, $state, $window, Document) {
-    $scope.items = Document.query();
+    $scope.items = Document.query({sort: 'createdAt DESC'});
     $scope.delete = function(item) {
        item.$delete(function() {
-          $scope.items = Document.query();
+          $scope.items = Document.query({sort: 'createdAt DESC'});
        });
     };
   })
   .controller('DocumentAddEditController', function($scope, $state, $stateParams, Document, DocumentType, Division, Position) {
     var me = this;
-    $scope.item = ($state.current.name === 'documents-new') ?
-      new Document({positions: [], createdAt: new Date()}) :
-      Document.get({ id: $stateParams.id });
-    $scope.available_doctypes = DocumentType.query();
-    $scope.available_divisions = Division.query();
+    var isEditing = ($state.current.name !== 'documents-new');
+
+    $scope.item = isEditing ?
+      Document.get({
+        id: $stateParams.id
+      }) :
+      new Document({positions: [], createdAt: new Date()});
+
+    $scope.available_doctypes = DocumentType.query({isDeleted: false});
+    $scope.available_divisions = Division.query({isDeleted: false});
     $scope.available_positions = Position.query({isDeleted: false});
 
     function initNewPosition() {

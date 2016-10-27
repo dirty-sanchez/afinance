@@ -35,6 +35,7 @@ module.exports = {
       }
     };
     var dateFrom, dateTo, groupBy;
+
     if (req.query != undefined) {
       if (!isNaN(Date.parse(req.query.dateFrom))) {
         dateFrom = new Date(req.query.dateFrom)
@@ -49,7 +50,7 @@ module.exports = {
       }
     }
 
-    if (dateFrom !== undefined && dateTo != undefined && dateFrom > dateTo) {
+    if (dateFrom != undefined && dateTo != undefined && dateFrom.getTime() < dateTo.getTime()) {
       filter.dateFrom = dateFrom;
       filter.dateTo = dateTo;
     } else {

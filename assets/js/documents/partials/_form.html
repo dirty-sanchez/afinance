@@ -1,34 +1,34 @@
 <div class="form-group">
   <label class="col-md-2 control-label">Номер документа</label>
-  <div class="col-md-1">
+  <div class="col-md-2">
     <input class="form-control" placeholder="Номер" ng-model="item.number" >
   </div>
 </div>
 
 <div class="form-group">
   <label class="col-md-2 control-label">Создан</label>
-  <div class="col-md-1">
-    <input class="form-control" disabled ng-model="item.createdAt" >
+  <div class="col-md-2">
+    <input class="form-control" disabled value="{{item.createdAt | date: 'HH:mm:ss dd.MM.yy'}}" >
   </div>
 </div>
 
 <div class="form-group">
   <label class="col-md-2 control-label">Тип документа</label>
-  <div class="col-md-5">
+  <div class="col-md-2">
     <select ng-options="doctype.name for doctype in this.available_doctypes track by doctype.id" ng-model="item.documentType"></select>
   </div>
 </div>
 
 <div class="form-group">
   <label class="col-md-2 control-label">Подразделение</label>
-  <div class="col-md-5">
+  <div class="col-md-2">
     <select ng-options="division.name for division in this.available_divisions track by division.id" ng-model="item.division"></select>
   </div>
 </div>
 
 <div class="form-group">
   <label class="col-md-2 control-label">Пробег</label>
-  <div class="col-md-1">
+  <div class="col-md-2">
     <input class="form-control" placeholder="Пробег" ng-model="item.division.mileage" />
   </div>
 </div>

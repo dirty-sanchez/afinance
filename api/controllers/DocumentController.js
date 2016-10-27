@@ -113,6 +113,7 @@ module.exports = {
     var me = this;
     Document.create({
       division: req.body.division.id,
+      number: req.body.number,
       documentType: req.body.documentType.id
     })
       .then((doc) => {

@@ -37,6 +37,7 @@ var ReportService = {
           inner join positiongroup as posgroup on (posgroup.id = pos.group) \
           where doc.createdAt between "' + filter.dateFrom.toISOString() + '" and "' + filter.dateTo.toISOString() + '" \
         group by date, costType, pos.id';
+      console.log(sql);
       Document.query(sql, (err, queryData) => {
           // var res = {
           //   columns: [],
