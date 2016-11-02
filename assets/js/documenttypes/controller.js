@@ -9,26 +9,27 @@ angular.module('app.documenttypes', [])
        });
     };
   })
-  .controller('DocumentTypeEditController', function($scope, $state, $stateParams, DocumentType) {
+  .controller('DocumentTypeAddEditController', function($scope, $state, $stateParams, DocumentType) {
+    var isEditing = ($state.current.name !== 'documenttypes-new');
+    $scope.availableCostTypes = [
+      {id: 'cost', name: 'Расход'},
+      {id: 'income', name: 'Доход'},
+    ];
 
-    $scope.update = function() {
-      $scope.item.$update(function() {
-        $state.go('documenttypes-list');
-      });
-    };
-
-    $scope.load = function() {
+    if (isEditing) {
       $scope.item = DocumentType.get({ id: $stateParams.id });
-    };
-
-    $scope.load();
-  })
-  .controller('DocumentTypeAddController', function ($scope, $state, DocumentType) {
-    $scope.item = new DocumentType();
-    $scope.add = function() {
-      $scope.item.$save(function() {
-        $state.go('documenttypes-list');
-      });
+      $scope.submit = () => {
+        $scope.item.$update(function () {
+          $state.go('documenttypes-list');
+        });
+      };
+    } else {
+      $scope.item = new DocumentType();
+      $scope.submit = () => {
+        $scope.item.$save(function () {
+          $state.go('documenttypes-list');
+        });
+      };
     }
   })
 ;

@@ -11,12 +11,12 @@ angular.module('app.documenttypes').config(
       .state('documenttypes-edit', {
         url: '/documenttypes/:id/edit',
         templateUrl: '/js/documenttypes/partials/edit.html',
-        controller: 'DocumentTypeEditController'
+        controller: 'DocumentTypeAddEditController'
       })
       .state('documenttypes-new', {
         url: '/documenttypes/new',
-        templateUrl: '/js/documenttypes/partials/new.html',
-        controller: 'DocumentTypeAddController'
+        templateUrl: '/js/documenttypes/partials/edit.html',
+        controller: 'DocumentTypeAddEditController'
       })
     }
 );

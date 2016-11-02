@@ -4,20 +4,43 @@
  * Created by Sandeep on 01/06/14.
  */
 
-angular.module('app', [,
-  'ui.router',
-  'checklist-model',
-  'core',
-  'app.contragents',
-  'app.contragentgroups',
-  'app.divisions',
-  'app.divisiongroups',
-  'app.documenttypes',
-  'app.documents',
-  'app.positions',
-  'app.positiongroups',
-  'app.reports'
-]);
+angular
+  .module('app', [,
+    'ui.router',
+    'checklist-model',
+    'core',
+    'app.contragents',
+    'app.contragentgroups',
+    'app.divisions',
+    'app.divisiongroups',
+    'app.documenttypes',
+    'app.documents',
+    'app.positions',
+    'app.positiongroups',
+    'app.reports'
+  ])
+  .filter('costTypeFilter', () => {
+    return (items, documentType) => {
+      if (documentType != undefined && documentType.costType != undefined) {
+        return items.filter((el) => el.group != undefined && el.group.costType != undefined && el.group.costType == documentType.costType)
+      }
+
+      return items.slice();
+    };
+  })
+  .filter('rusCostTypeFilter', () => {
+    return (costType) => {
+      switch (costType) {
+        case 'cost':
+          return 'Расход';
+        case 'income':
+          return 'Доход';
+        default:
+          return costType;
+      }
+    };
+  })
+;
 
 angular.module('app').config(function($stateProvider,$httpProvider) {
   $stateProvider

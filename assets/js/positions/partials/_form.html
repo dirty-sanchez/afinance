@@ -6,14 +6,15 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">Тип документа</label>
+  <label class="col-md-2 control-label">Группа</label>
   <div class="col-md-5">
     <select ng-options="group.name for group in this.groups track by group.id" ng-model="item.group"></select>
   </div>
 </div>
 
 <div class="form-group">
-  <input type="submit" class="btn btn-success" value="Сохранить" />
-  <a href="#" onclick="javascript:history.back()" type="button" class="btn btn-warning">Отмена</a>
+  <div class="col-md-offset-1">
+    <input type="submit" class="btn btn-success" value="Сохранить" />
+    <a href="#" onclick="javascript:history.back()" type="button" class="btn btn-warning">Отмена</a>
+  </div>
 </div>
-

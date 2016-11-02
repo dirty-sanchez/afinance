@@ -74,7 +74,7 @@
         </tr>
         <tr>
           <td>
-            <select ng-options="position.id as position.name for position in this.available_positions" ng-model="new_position.positionId"></select>
+            <select ng-options="position.id as position.name for position in this.available_positions | costTypeFilter:item.documentType" ng-model="new_position.positionId"></select>
           </td>
           <td>
             <input class="form-control" placeholder="Количество" ng-model="new_position.piecesCount" ng-change="recountByQuantity(new_position)"/>
