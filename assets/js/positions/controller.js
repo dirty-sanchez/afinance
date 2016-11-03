@@ -9,27 +9,23 @@ angular.module('app.positions', [])
        });
     };
   })
-  .controller('PositionEditController', function($scope, $state, $stateParams, Position, PositionGroup) {
+  .controller('PositionAddEditController', function($scope, $state, $stateParams, Position, PositionGroup) {
+    var isEditing = ($state.current.name === 'positions-edit')
     $scope.groups = PositionGroup.query();
-    $scope.update = function() {
-      $scope.item.$update(function() {
-        $state.go('positions-list');
-      });
-    };
-
-    $scope.load = function() {
-      $scope.item = Position.get({ id: $stateParams.id });
-    };
-
-    $scope.load();
-  })
-  .controller('PositionAddController', function ($scope, $state, $stateParams, $rootScope, Position, PositionGroup) {
-    $scope.groups = PositionGroup.query();
-    $scope.item = new Position();
-    $scope.add = function() {
-      $scope.item.$save(function() {
-        $state.go('positions-list');
-      });
+    if (isEditing) {
+      $scope.item = Position.get({id: $stateParams.id});
+      $scope.submit = function update() {
+        $scope.item.$update(function () {
+          $state.go('positions-list');
+        });
+      };
+    } else {
+      $scope.item = new Position();
+      $scope.submit = function() {
+        $scope.item.$save(function() {
+          $state.go('positions-list');
+        });
+      }
     }
   })
 ;

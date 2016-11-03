@@ -11,12 +11,12 @@ angular.module('app.positions').config(
       .state('positions-edit', {
         url: '/positions/:id/edit',
         templateUrl: '/js/positions/partials/edit.html',
-        controller: 'PositionEditController'
+        controller: 'PositionAddEditController'
       })
       .state('positions-new', {
         url: '/positions/new',
-        templateUrl: '/js/positions/partials/new.html',
-        controller: 'PositionAddController'
+        templateUrl: '/js/positions/partials/edit.html',
+        controller: 'PositionAddEditController'
       })
     }
 );

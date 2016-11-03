@@ -7,11 +7,6 @@
  */
 
 module.exports = {
-  //create: function(request, response) {
-  //  "use strict";
-  //  return response.toJson({id: 'test', name: 'aasdfadsfadf'});
-  //},
-
   _makeDocumentDtoForUpdate: (oldInstance, userInput) => {
     "use strict";
     var res = {};
@@ -100,7 +95,13 @@ module.exports = {
         Promise.all(promisesList)
           .then(() => {
             return Document.update({id: oldInstance.id}, dtoForUpdate).then(() => {
-              return res.ok('updated');
+              Division.update({id: req.body.division.id}, {mileage: req.body.division.mileage}, (failure) => {
+                if (failure) {
+                  return ;
+                }
+
+                return res.ok('updated');
+              });
             });
           })
           .catch((err) => {
@@ -129,7 +130,13 @@ module.exports = {
 
         PositionDocument.create(positions)
           .then((positionsDoc) => {
-            return res.created(doc);
+            Division.update({id: req.body.division.id}, {mileage: req.body.division.mileage}, (failure) => {
+              if (failure) {
+                return ;
+              }
+
+              return res.created(doc);
+            });
           })
           .catch((err) => {
             return res.status(422).send(err);
