@@ -17,7 +17,7 @@ angular
     'app.documents',
     'app.positions',
     'app.positiongroups',
-    'app.reports'
+    'app.reports',
   ])
   .filter('costTypeFilter', () => {
     return (items, documentType) => {
@@ -104,7 +104,7 @@ angular.module('app').config(function($stateProvider,$httpProvider) {
     //})
   })
     .run(function($state){
-      $state.go('contragentgroups-list');
+      $state.go('documents-list');
     })
 ;
 

@@ -11,12 +11,12 @@ angular.module('app.divisions').config(
       .state('divisions-edit', {
         url: '/divisions/:id/edit',
         templateUrl: '/js/divisions/partials/edit.html',
-        controller: 'DivisionEditController'
+        controller: 'DivisionAddEditController'
       })
       .state('divisions-new', {
         url: '/divisions/new',
-        templateUrl: '/js/divisions/partials/new.html',
-        controller: 'DivisionAddController'
+        templateUrl: '/js/divisions/partials/edit.html',
+        controller: 'DivisionAddEditController'
       })
     }
 );

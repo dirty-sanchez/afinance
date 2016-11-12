@@ -17,12 +17,14 @@
           <thead>
           <tr>
             <th>Название</th>
+            <th>Группы</th>
             <th></th>
           </tr>
           </thead>
           <tbody>
           <tr ng-repeat="item in this.items">
-            <td><a ui-sref="divisions-edit({ id: item.id })">{{item.name}}</a></td>
+            <td><a ui-sref="divisions-edit({ id: item.id })">{{ item.name }}</a></td>
+            <td>{{ item | divisionGroupsFormatter }}</td>
             <td><a class="btn btn-danger"  ng-click="delete(item)">Удалить</a></td>
           </tr>
           </tbody>
