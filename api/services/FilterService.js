@@ -32,7 +32,9 @@ module.exports = {
 
         res.setDate(currentDate.getDate() + 1);
         return res;
-      }
+      },
+      divisionsOnly: [],
+      divisionGroupsOnly: []
     };
     var dateFrom, dateTo, groupBy;
 
@@ -61,6 +63,15 @@ module.exports = {
     filter.dateTo.setDate(filter.dateTo.getDate() + 1);
     if (groupBy !== undefined) {
       filter.groupBy = groupBy;
+    }
+
+    if (req.query.divisionsOnly != null && req.query.divisionsOnly.constructor === Array && req.query.divisionsOnly.length > 0) {
+      filter.divisionsOnly = req.query.divisionsOnly;
+    }
+
+
+    if (req.query.divisionGroupsOnly != null && req.query.divisionGroupsOnly.constructor === Array && req.query.divisionGroupsOnly.length > 0) {
+      filter.divisionGroupsOnly = req.query.divisionGroupsOnly;
     }
 
     return filter;

@@ -15,6 +15,33 @@
 </div>
 
 <div class="form-group">
+  <label class="col-md-2 control-label">по группам подразделений</label>
+  <isteven-multi-select
+      input-model="availableFilterDivisionGroups"
+      output-model="filter.divisionGroups"
+      output-properties="id"
+      button-label="name"
+      item-label="name"
+      tick-property="ticked"
+  >
+  </isteven-multi-select>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-2 control-label">по подразделениям</label>
+  <isteven-multi-select
+      input-model="availableFilterDivisions"
+      output-model="filter.divisions"
+      output-properties="id"
+      button-label="name"
+      item-label="name"
+      tick-property="ticked"
+  >
+  </isteven-multi-select>
+</div>
+
+<div class="form-group">
   <div class="col-md-1">
     <input type="submit" class="btn" value="Построить" />
   </div>

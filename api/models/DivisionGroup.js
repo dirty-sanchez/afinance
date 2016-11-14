@@ -13,6 +13,8 @@ module.exports = {
 
     name : { type: 'string' },
 
+    isDeleted: { type: 'boolean', defaultsTo: false},
+
     // many-to-many association
     divisions: {
       collection: 'division',

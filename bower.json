@@ -21,6 +21,8 @@
     "bootstrap": "^3.3.7",
     "angular": "1.5.8",
     "angular-resource": "^1.5.8",
-    "checklist-model": "^0.10.0"
+    "checklist-model": "^0.10.0",
+    "bootstrap-multiselect": "^0.9.13",
+    "isteven-angular-multiselect": "^4.0.0"
   }
 }

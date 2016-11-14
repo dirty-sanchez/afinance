@@ -23,6 +23,8 @@ var ReportService = {
 
   fetchData: (filter) => {
     return new Promise((resolve, reject) => {
+      var filterByDivisions = filter.divisionsOnly.length > 0;
+      var filterByDivisionGroups = filter.divisionGroupsOnly.length > 0;
       var sql = 'select date_format(doc.createdAt, "' + filter.groupByAsQueryParam() + '") as date, \
         posgroup.costType as costType, \
         pos.id as positionId, \
@@ -34,9 +36,25 @@ var ReportService = {
         from document as doc \
           inner join positiondocument as posdoc on (doc.id = posdoc.document) \
           inner join position as pos on (posdoc.position = pos.id) \
-          inner join positiongroup as posgroup on (posgroup.id = pos.group) \
-          where doc.createdAt between "' + filter.dateFrom.toISOString() + '" and "' + filter.dateTo.toISOString() + '" \
-        group by date, costType, pos.id';
+          inner join positiongroup as posgroup on (posgroup.id = pos.group) ';
+
+      if (filterByDivisions || filterByDivisionGroups) {
+        sql += ' inner join division on (doc.division = division.id) ';
+        if (filterByDivisionGroups) {
+          sql += ' inner join division_groups__divisiongroup_divisions as divisions_in_groups on (divisions_in_groups.division_groups = division.id) '
+        }
+      }
+
+      sql += ' where doc.createdAt between "' + filter.dateFrom.toISOString() + '" and "' + filter.dateTo.toISOString() + '" ';
+      if (filterByDivisions) {
+        sql += ' and division.id in (' + filter.divisionsOnly.join(',') + ') ';
+      }
+
+      if (filterByDivisionGroups) {
+        sql += ' and divisions_in_groups.divisiongroup_divisions in (' + filter.divisionGroupsOnly.join(',') + ') ';
+      }
+
+      sql += 'group by date, costType, pos.id';
       console.log(sql);
       Document.query(sql, (err, queryData) => {
           // var res = {

@@ -7,13 +7,15 @@ function makeValueKeyFromDateStr(date) {
 }
 
 angular.module('app.reports', [])
-  .controller('DetailedReportController', function($scope, $state, DetailsReport) {
+  .controller('DetailedReportController', function($scope, $state, DetailsReport, DivisionGroup) {
     var now = new Date();
 
     $scope.filter = {
       dateFrom: new Date(now.getFullYear(), now.getMonth(), 1),
       dateTo: now,
-      groupBy: 'day'
+      groupBy: 'day',
+      divisionGroups: [],
+      divisions: []
     };
     $scope.availableGrouping = [
       {id: 'day', name: 'по дням'},
@@ -22,9 +24,33 @@ angular.module('app.reports', [])
       {id: 'year', name: 'по годам'}
     ];
     $scope.data = [];
+    $scope.availableFilterDivisions = [];
+    $scope.availableFilterDivisionGroups = DivisionGroup.query(() => {
+      var divisonsMap = [];
+      $scope.availableFilterDivisionGroups = $scope.availableFilterDivisionGroups
+        .map((divisonGroup) => {
+          divisonGroup.divisions.forEach((divison) => {
+            divisonsMap[divison.id] = divison;
+          });
+
+          return {id: divisonGroup.id, 'name': divisonGroup.name, ticked: !divisonGroup.isDeleted};
+        });
+
+      for (var field in divisonsMap) {
+        $scope.availableFilterDivisions.push(divisonsMap[field]);
+      }
+    });
 
     $scope.fetchData = (filter) => {
-      DetailsReport.query(filter, (queryData) => {
+      var queryFilter = {
+        dateFrom: filter.dateFrom,
+        dateTo: filter.dateTo,
+        groupBy: filter.groupBy,
+        'divisionGroupsOnly[]': filter.divisionGroups.map((divisonGroupFilterObj) => divisonGroupFilterObj.id),
+        'divisionsOnly[]': filter.divisions.map((divisonFilterObj) => divisonFilterObj.id)
+      };
+
+      DetailsReport.query(queryFilter, (queryData) => {
         var columnsInfo;
         var rangeInfo = {
           _data: {},

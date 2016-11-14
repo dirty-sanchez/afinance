@@ -8,6 +8,7 @@ angular
   .module('app', [,
     'ui.router',
     'checklist-model',
+    'isteven-multi-select',
     'core',
     'app.contragents',
     'app.contragentgroups',
@@ -17,7 +18,7 @@ angular
     'app.documents',
     'app.positions',
     'app.positiongroups',
-    'app.reports',
+    'app.reports'
   ])
   .filter('costTypeFilter', () => {
     return (items, documentType) => {
