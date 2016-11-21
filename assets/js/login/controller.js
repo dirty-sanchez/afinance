@@ -1,9 +1,13 @@
 "use strict";
 
 angular.module('app.login', [])
-  .controller('LoginController', function ($scope, $state, $window, $http) {
+  .controller('LoginController', function ($scope, $state, $stateParams, $window, $http) {
     $scope.username = '';
     $scope.password = '';
+    if ($stateParams.do === 'logout') {
+      $http.post('login/logout');
+    }
+
     $scope.login = function () {
       $http.post('login/login', {username: $scope.username, password: $scope.password})
         .then(() => {

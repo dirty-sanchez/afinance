@@ -48,9 +48,10 @@ angular.module('app').config(function($stateProvider,$httpProvider) {
   $stateProvider
     ///login
     .state('login',{
-      url:'/login',
+      url:'/login?do=:logout',
       templateUrl:'/js/login/login.html',
-      controller:'LoginController'
+      controller:'LoginController',
+      params: {do: 'login'}
     })
     .state('layout', {
       abstract: true,
@@ -78,16 +79,19 @@ angular.module('app').config(function($stateProvider,$httpProvider) {
     //#endregion routes
     //region ContragentController
     .state('contragents-list',{
+      parent: 'layout',
       url:'/contragents',
       templateUrl:'/js/contragents/partials/list.html',
       controller:'ContragentListController'
     })
     .state('contragents-edit',{
+      parent: 'layout',
       url:'/contragents/:id/edit',
       templateUrl:'/js/contragents/partials/edit.html',
       controller:'ContragentEditController'
     })
     .state('contragents-new',{
+      parent: 'layout',
       url:'/contragents/new',
       templateUrl:'/js/contragents/partials/new.html',
       controller:'ContragentAddController'
@@ -95,6 +99,7 @@ angular.module('app').config(function($stateProvider,$httpProvider) {
     //endregion  routes
     //region ContragentGroups routes
     .state('contragentgroups-list',{
+        parent: 'layout',
         url:'/contragentgroups',
         templateUrl:'/js/contragentgroups/partials/list.html',
         controller:'ContragentGroupListController'
@@ -105,6 +110,7 @@ angular.module('app').config(function($stateProvider,$httpProvider) {
         controller:'ContragentGroupEditController'
     })
     .state('contragentgroups-new',{
+        parent: 'layout',
         url:'/contragentgroups/new',
         templateUrl:'/js/contragentgroups/partials/new.html',
         controller:'ContragentGroupAddController'
