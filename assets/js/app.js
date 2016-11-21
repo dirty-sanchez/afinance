@@ -18,7 +18,8 @@ angular
     'app.documents',
     'app.positions',
     'app.positiongroups',
-    'app.reports'
+    'app.reports',
+    'app.login'
   ])
   .filter('costTypeFilter', () => {
     return (items, documentType) => {
@@ -45,68 +46,75 @@ angular
 
 angular.module('app').config(function($stateProvider,$httpProvider) {
   $stateProvider
-      .state('contragents-list',{
-        url:'/contragents',
-        templateUrl:'/js/contragents/partials/list.html',
-        controller:'ContragentListController'
-      })
-      .state('contragents-edit',{
-        url:'/contragents/:id/edit',
-        templateUrl:'/js/contragents/partials/edit.html',
-        controller:'ContragentEditController'
-      })
-      .state('contragents-new',{
-        url:'/contragents/new',
-        templateUrl:'/js/contragents/partials/new.html',
-        controller:'ContragentAddController'
-      })
-      /////////////////////////////////////
-      /// contragent groups routes
-      .state('contragentgroups-list',{
-          url:'/contragentgroups',
-          templateUrl:'/js/contragentgroups/partials/list.html',
-          controller:'ContragentGroupListController'
-      })
-      .state('contragentgroups-edit',{
-          url:'/contragentgroups/:id/edit',
-          templateUrl:'/js/contragentgroups/partials/edit.html',
-          controller:'ContragentGroupEditController'
-      })
-      .state('contragentgroups-new',{
-          url:'/contragentgroups/new',
-          templateUrl:'/js/contragentgroups/partials/new.html',
-          controller:'ContragentGroupAddController'
-      })
-    ////////////////////////////////////////////
-    ///
-    ////////////////////////////////////////////
-    ///  documents
-    //.state('documents-list',{
-    //  url:'/documents',
-    //  templateUrl:'/js/documents/partials/list.html',
-    //  controller:'DocumentListController'
-    //})
-    //.state('documents-edit',{
-    //  url:'/documents/:id/edit',
-    //  templateUrl:'/js/documents/partials/edit.html',
-    //  controller:'DocumentEditController'
-    //})
-    //.state('documents-new',{
-    //  url:'/documents/new',
-    //  templateUrl:'/js/documents/partials/new.html',
-    //  controller:'DocumentAddController'
-    //})
-    //////////////////////////////////////////////
-    ///// reports
-    //.state('reports',{
-    //  url:'/contragentgroups',
-    //  templateUrl:'/js/contragentgroups/partials/list.html',
-    //  controller:'ContragentGroupListController'
-    //})
-  })
-    .run(function($state){
-      $state.go('documents-list');
+    ///login
+    .state('login',{
+      url:'/login',
+      templateUrl:'/js/login/login.html',
+      controller:'LoginController'
     })
+    .state('layout', {
+      abstract: true,
+      templateUrl:'/js/layout.html',
+    })
+    //region DocumentsController
+    .state('documents-list', {
+      parent: 'layout',
+      url: '/documents',
+      templateUrl: '/js/documents/partials/list.html',
+      controller: 'DocumentListController'
+    })
+    .state('documents-edit', {
+      parent: 'layout',
+      url: '/documents/:id/edit',
+      templateUrl: '/js/documents/partials/edit.html',
+      controller: 'DocumentAddEditController'
+    })
+    .state('documents-new', {
+      parent: 'layout',
+      url: '/documents/new',
+      templateUrl: '/js/documents/partials/edit.html',
+      controller: 'DocumentAddEditController'
+    })
+    //#endregion routes
+    //region ContragentController
+    .state('contragents-list',{
+      url:'/contragents',
+      templateUrl:'/js/contragents/partials/list.html',
+      controller:'ContragentListController'
+    })
+    .state('contragents-edit',{
+      url:'/contragents/:id/edit',
+      templateUrl:'/js/contragents/partials/edit.html',
+      controller:'ContragentEditController'
+    })
+    .state('contragents-new',{
+      url:'/contragents/new',
+      templateUrl:'/js/contragents/partials/new.html',
+      controller:'ContragentAddController'
+    })
+    //endregion  routes
+    //region ContragentGroups routes
+    .state('contragentgroups-list',{
+        url:'/contragentgroups',
+        templateUrl:'/js/contragentgroups/partials/list.html',
+        controller:'ContragentGroupListController'
+    })
+    .state('contragentgroups-edit',{
+        url:'/contragentgroups/:id/edit',
+        templateUrl:'/js/contragentgroups/partials/edit.html',
+        controller:'ContragentGroupEditController'
+    })
+    .state('contragentgroups-new',{
+        url:'/contragentgroups/new',
+        templateUrl:'/js/contragentgroups/partials/new.html',
+        controller:'ContragentGroupAddController'
+    })
+    //endregion
+})
+  .run(function($state){
+    $state.go('login');
+  })
+
 ;
 
 
