@@ -4,8 +4,13 @@
 
 module.exports = function isAdmin(req, res, next) {
   "use strict";
+  var userId = req.session.userId;
 
-  User.findOne({authKey: authKey})
+  if (userId == undefined) {
+    return res.send(401);
+  }
+
+  User.findOne({id: userId})
     .exec((err, user) => {
       if (err) {
         return res.serverError(err);
@@ -16,7 +21,7 @@ module.exports = function isAdmin(req, res, next) {
       }
 
       if (user.role != 'admin') {
-        return res.send(403);
+        return res.send(403, 'You dont have a sufficient permissions to perform this action');
       }
 
       return next();

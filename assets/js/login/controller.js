@@ -1,28 +1,20 @@
 "use strict";
 
-angular.module('app.login', [])
-  .controller('LoginController', function ($scope, $state, $stateParams, $window, $http) {
+angular.module('app.login', ['ui-notification'])
+  .controller('LoginController', function ($scope, $state, $stateParams, $window, AuthService, Notification) {
     $scope.username = '';
     $scope.password = '';
     if ($stateParams.do === 'logout') {
-      $http.post('login/logout');
+      AuthService.logout()
     }
 
     $scope.login = function () {
-      $http.post('login/login', {username: $scope.username, password: $scope.password})
-        .then(() => {
-            $state.go('documents-list');
-          },
-          (responseObj) => {
-            if (responseObj.status == 401) {
-              console.log('Failed to login: bad username or password');
-            } else if (responseObj.status == 400) {
-              console.log('Username and password are required!!');
-            } else {
-              console.log('Something went wrong! try again later');
-            }
-          }
-        );
+      AuthService.login($scope.username, $scope.password).then(() => {
+        $scope.setCurrentUsername($scope.username);
+        $state.go('documents-list');
+      }, () => {
+        Notification.error('Неправильный логин или пароль.')
+      });
     }
   })
   .controller('LogoutController', function ($scope, $state) {

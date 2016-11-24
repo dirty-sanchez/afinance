@@ -42,16 +42,51 @@ angular
       }
     };
   })
+  .constant('AUTH_EVENTS', {
+    notAuthenticated: 'auth-not-authenticated',
+    notAuthorized: 'auth-not-authorized'
+  })
+  .constant('USER_ROLES', {
+    admin: 'admin',
+    operator: 'operator'
+  })
+  .controller('AppController', function($scope, $state, AuthService, AUTH_EVENTS, Notification) {
+    $scope.username = AuthService.username();
+
+    $scope.$on(AUTH_EVENTS.notAuthorized, function(event) {
+      Notification.error('Доступ закрыт. Пожалуйста, войдите в систему под учетной записью администратора.');
+    });
+
+    $scope.$on(AUTH_EVENTS.notAuthenticated, function(event) {
+      if ($state.current.name === 'login') {
+        /// processed in the login/controller.js
+        return;
+      }
+
+      if (AuthService.isAuthenticated()) {
+        Notification.error('Время сеанса истекло. Пожалуйста, войдите в систему заново.');
+      } else {
+        Notification.error('Нет доступа. Пожалуйста, представьтесь системе.');
+      }
+
+      $state.go('login');
+    });
+
+    $scope.setCurrentUsername = function(name) {
+      $scope.username = name;
+    };
+
+  })
 ;
 
 angular.module('app').config(function($stateProvider,$httpProvider) {
+  $httpProvider.interceptors.push('AuthInterceptor');
   $stateProvider
     ///login
     .state('login',{
-      url:'/login?do=:logout',
+      url:'/login',
       templateUrl:'/js/login/login.html',
-      controller:'LoginController',
-      params: {do: 'login'}
+      controller:'LoginController'
     })
     .state('layout', {
       abstract: true,
@@ -120,7 +155,6 @@ angular.module('app').config(function($stateProvider,$httpProvider) {
   .run(function($state){
     $state.go('login');
   })
-
 ;
 
 

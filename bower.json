@@ -23,6 +23,7 @@
     "angular-resource": "^1.5.8",
     "checklist-model": "^0.10.0",
     "bootstrap-multiselect": "^0.9.13",
-    "isteven-angular-multiselect": "^4.0.0"
+    "isteven-angular-multiselect": "^4.0.0",
+    "angular-ui-notification": "^0.2.0"
   }
 }
