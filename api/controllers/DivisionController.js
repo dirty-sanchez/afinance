@@ -6,16 +6,6 @@
  */
 
 module.exports = {
-	
 
-
-  /**
-   * `DivisionsController.divisiongroups()`
-   */
-  divisiongroups: function (req, res) {
-    return res.json({
-      todo: 'divisiongroups() is not implemented yet!'
-    });
-  }
 };
 

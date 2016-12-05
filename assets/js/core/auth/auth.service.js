@@ -60,11 +60,11 @@ angular.module('core.auth')
         $http.post('login/login', {username: name, password: pw})
           .then((response) => {
               if (response && response.data && response.data.username) {
-                storeUserCredentials([name, response.role || USER_ROLES.operator, 'yourServerToken'].join(TOKEN_SEPARATOR));
-                return resolve('Login success.');
+                storeUserCredentials([response.data.username, response.data.role || USER_ROLES.operator, 'yourServerToken'].join(TOKEN_SEPARATOR));
+                return resolve(response.data);
               }
 
-              console.warn('strange response from the server', response);
+              console.warn('strange response has came from the server', response);
               reject('Something went wrong on the server, ask for support');
             },
             reject

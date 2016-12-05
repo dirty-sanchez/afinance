@@ -9,8 +9,9 @@ angular.module('app.login', ['ui-notification'])
     }
 
     $scope.login = function () {
-      AuthService.login($scope.username, $scope.password).then(() => {
+      AuthService.login($scope.username, $scope.password).then((userData) => {
         $scope.setCurrentUsername($scope.username);
+        $scope.setCurrentUserInfo(userData);
         $state.go('documents-list');
       }, () => {
         Notification.error('Неправильный логин или пароль.')

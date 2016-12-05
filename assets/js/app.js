@@ -19,7 +19,8 @@ angular
     'app.positions',
     'app.positiongroups',
     'app.reports',
-    'app.login'
+    'app.login',
+    'app.logs'
   ])
   .filter('costTypeFilter', () => {
     return (items, documentType) => {
@@ -52,6 +53,7 @@ angular
   })
   .controller('AppController', function($scope, $state, AuthService, AUTH_EVENTS, Notification) {
     $scope.username = AuthService.username();
+    $scope.role = AuthService.role();
 
     $scope.$on(AUTH_EVENTS.notAuthorized, function(event) {
       Notification.error('Доступ закрыт. Пожалуйста, войдите в систему под учетной записью администратора.');
@@ -76,6 +78,10 @@ angular
       $scope.username = name;
     };
 
+    $scope.setCurrentUserInfo = (userData) => {
+      $scope.username = userData.username;
+      $scope.role = userData.role;
+    };
   })
 ;
 
@@ -156,5 +162,3 @@ angular.module('app').config(function($stateProvider,$httpProvider) {
     $state.go('login');
   })
 ;
-
-

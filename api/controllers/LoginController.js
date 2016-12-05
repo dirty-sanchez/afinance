@@ -28,8 +28,9 @@ module.exports = {
 
             req.session.authenticated = true;
             req.session.userId = user.id;
+            req.session.username = req.param('username', '<UNNAMED>');
             return res.send(200, {
-              username: req.param('username',''),
+              username: req.param('username', ''),
               role: user.role,
             });
           })
@@ -43,7 +44,6 @@ module.exports = {
   },
 
   check: (req, res) => {
-    console.dir(req.session);
     return res.json({authenticated: req.session.authenticated});
   },
 

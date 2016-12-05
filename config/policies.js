@@ -32,16 +32,8 @@ module.exports.policies = {
     'login': true
   },
 
-  DocumentController: {
-    create: ['sessionAuth', 'isAdmin'],
-    update: ['sessionAuth', 'isAdmin'],
-    remove: ['sessionAuth', 'isAdmin']
-  },
-
-  PositionController: {
-    create: ['sessionAuth', 'isAdmin'],
-    update: ['sessionAuth', 'isAdmin'],
-    remove: ['sessionAuth', 'isAdmin']
+  WorkLogController: {
+    '*': ['sessionAuth', 'isAdmin']
   },
 
   DivisionController: {
@@ -49,6 +41,4 @@ module.exports.policies = {
     update: ['sessionAuth', 'isAdmin'],
     remove: ['sessionAuth', 'isAdmin']
   },
-
-
 };
