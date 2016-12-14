@@ -40,8 +40,8 @@ module.exports.http = {
       'methodOverride',
       'poweredBy',
       '$custom',
-      'router',
       'myRequestLogger',
+      'router',
       'www',
       'favicon',
       '404',
@@ -55,14 +55,19 @@ module.exports.http = {
   ****************************************************************************/
 
     myRequestLogger: function (req, res, next) {
-      const nextResult = next();
-      console.dir(req.method)
-      console.dir(req.session)
-      if (req.method !== 'GET' && req.session.authenticated) {
-        WorkLogService.add(req);
+
+      function afterResponse() {
+        res.removeListener('finish', afterResponse);
+        res.removeListener('close', afterResponse);
+        WorkLogService.logRequest(req, res);
       }
 
-      return nextResult;
+      if (WorkLogService.isNeedToLogRequest(req)) {
+        res.on('finish', afterResponse);
+        res.on('close', afterResponse);
+      }
+
+      return next();
     },
 
 

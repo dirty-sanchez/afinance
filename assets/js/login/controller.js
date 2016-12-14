@@ -13,8 +13,12 @@ angular.module('app.login', ['ui-notification'])
         $scope.setCurrentUsername($scope.username);
         $scope.setCurrentUserInfo(userData);
         $state.go('documents-list');
-      }, () => {
-        Notification.error('Неправильный логин или пароль.')
+      }, (response) => {
+        if (response.status === 401) {
+          Notification.error('Неправильный логин или пароль.');
+        } else {
+          Notification.warning('Что то пошло не так на сервере, обратитесь в техподдержку.');
+        }
       });
     }
   })

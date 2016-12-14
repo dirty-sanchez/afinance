@@ -65,7 +65,7 @@ angular.module('core.auth')
               }
 
               console.warn('strange response has came from the server', response);
-              reject('Something went wrong on the server, ask for support');
+              reject(response);
             },
             reject
           );

@@ -5,6 +5,8 @@
  * @description :: Server-side logic for managing Documentgroups
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+var crypto = require('crypto');
+
 
 module.exports = {
 	login: (req, res) => {
