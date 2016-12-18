@@ -8,6 +8,8 @@ module.exports = {
 
     password: { type: 'string' },
 
+    isDeleted: { type: 'boolean', defaultsTo: false },
+
     role: { type: 'string' }
   }
 };

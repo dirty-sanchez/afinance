@@ -93,4 +93,18 @@ angular.module('core.auth')
       username: function() {return username;},
       role: function() {return role;}
     };
-  });
+  })
+  .factory('User', ['$resource',
+    function($resource) {
+      return $resource(
+        '/user/:id',
+        { id: '@id' },
+        {
+          update: {
+            method: 'PUT'
+          }
+        }
+      );
+    }
+  ])
+;

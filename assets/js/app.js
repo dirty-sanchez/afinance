@@ -20,7 +20,8 @@ angular
     'app.positiongroups',
     'app.reports',
     'app.login',
-    'app.logs'
+    'app.logs',
+    'app.users',
   ])
   .filter('costTypeFilter', () => {
     return (items, documentType) => {

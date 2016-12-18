@@ -30,6 +30,7 @@ module.exports = {
 
             req.session.authenticated = true;
             req.session.userId = user.id;
+            req.session.userRole = user.role;
             req.session.username = req.param('username', '<UNNAMED>');
             return res.send(200, {
               username: req.param('username', ''),

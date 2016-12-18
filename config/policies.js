@@ -41,4 +41,11 @@ module.exports.policies = {
     update: ['sessionAuth', 'isAdmin'],
     remove: ['sessionAuth', 'isAdmin']
   },
+
+  UserController: {
+    '*': ['sessionAuth', 'isAdmin'],
+    'find': ['sessionAuth', 'isItMeOrAdmin'],
+    'findOne': ['sessionAuth', 'isItMeOrAdmin'],
+    'update': ['sessionAuth', 'isItMeOrAdmin']
+  }
 };
