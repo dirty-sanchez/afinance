@@ -72,7 +72,7 @@ const WorkLogService = {
 
     return {
       makeMsg: function() {
-        const operation = operationMap[req.method] || '';
+        const operation = operationMap[req.method] || ' запросил "' + req.method + '" ';
         let logMsgStruct = {
           message: 'пользователь "' + username + '" ' + operation + ' ',
           data: {}
@@ -92,7 +92,7 @@ const WorkLogService = {
             logMsgStruct.data = req.body;
           }
         } else {
-          logMsgStruct.message += 'запросил ' + req.method + ' ' + req.path;
+          logMsgStruct.message += req.path;
           logMsgStruct.data = req.body;
         }
 
@@ -108,16 +108,28 @@ const WorkLogService = {
       'POST:documenttype',
       'POST:division',
       'POST:position',
+      'POST:positiongroup',
+      'POST:user',
+      'POST:contragent',
+      'POST:contragentgroup ',
 
       'PUT:document',
       'PUT:documenttype',
       'PUT:division',
       'PUT:position',
+      'PUT:positiongroup',
+      'PUT:user',
+      'PUT:contragent',
+      'PUT:contragentgroup',
 
       'DELETE:document',
       'DELETE:documenttype',
       'DELETE:division',
       'DELETE:position',
+      'DELETE:positiongroup',
+      'DELETE:user',
+      'DELETE:contragent',
+      'DELETE:contragentgroup',
     ];
     const resourceData = req.path.split('/');// expected something like "/donor/37"
 
