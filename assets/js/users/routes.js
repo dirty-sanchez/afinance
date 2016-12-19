@@ -7,7 +7,7 @@ angular.module('app.users').config(
         parent: 'layout',
         url: '/users',
         templateUrl: '/js/users/partials/list.html',
-        controller: 'UserListController'
+        controller: 'UserListController as vm'
       })
       .state('users-edit', {
         parent: 'layout',

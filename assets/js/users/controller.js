@@ -2,22 +2,33 @@
 
 angular.module('app.users', [])
   .controller('UserListController', function($scope, $state, $window, User) {
-    var availableCostTypes = {
+    var vm = this;
+    vm.items = [];
+    vm.loadItems = (tableState) => {
+      let pagination = {
+        limit: tableState.pagination.number || 5,
+        skip: tableState.pagination.start || 0
+      };
+
+      User.query(angular.extend(pagination, {isDeleted: false})).$promise
+        .then((items) => {
+          vm.items = items;
+          angular.copy(items, vm.safeItemsCollection);
+          tableState.pagination.numberOfPages = 2;
+        })
+        .finally(() => {
+          $scope.isLoading = false;
+        });
+    };
+    $scope.safeItemsCollection = [];
+    $scope.availableRoles = {
       'operator': 'Оператор',
       'admin': 'Администратор',
     };
-
-    var loadList = () => {
-      User.query({isDeleted: false}).$promise.then((items) => {
-        $scope.items = items;
-      });
-    };
-
+    $scope.isLoading = true;
     $scope.delete = function(item) {
-      item.$delete(loadList);
+      item.$delete(vm.loadItems);
     };
-
-    loadList();
   })
   .controller('UserAddEditController', function($scope, $state, $stateParams, User) {
     var isEditing = ($state.current.name === 'users-edit')

@@ -10,7 +10,7 @@
       </ol>
       <a ui-sref="users-new" type="button" class="btn btn-success">Добавить</a>
       <div class="table-responsive">
-        <table class="table table-hover table-striped">
+        <table class="table table-hover table-striped" st-table="vm.items" st-safe-src="vm.safeItemsCollection" st-pipe="vm.loadItems">
           <thead>
           <tr>
             <th>Имя пользователя</th>
@@ -18,13 +18,23 @@
             <th></th>
           </tr>
           </thead>
-          <tbody>
-          <tr ng-repeat="item in this.items">
-            <td><a ui-sref="users-edit({ id: item.id })">{{item.username}}</a></td>
-            <td><a ui-sref="users-edit({ id: item.id })">{{item.role}}</a></td>
-            <td><a class="btn btn-danger"  ng-click="delete(item)">Удалить</a></td>
-          </tr>
+          <tbody ng-show="vm.isLoading">
+            <tr>
+              <td colspan="3" class="text-center">Loading..</td>
+            </tr>
           </tbody>
+          <tbody ng-show="!vm.isLoading">
+            <tr ng-repeat="item in vm.items">
+              <td><a ui-sref="users-edit({ id: item.id })">{{item.username}}</a></td>
+              <td>{{ vm.availableRoles[item.role] }}</td>
+              <td><a class="btn btn-danger"  ng-click="delete(item)">Удалить</a></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="text-center" st-pagination="" st-items-by-page="5" colspan="3"></td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>

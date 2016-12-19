@@ -22,6 +22,7 @@ angular
     'app.login',
     'app.logs',
     'app.users',
+    'smart-table',
   ])
   .filter('costTypeFilter', () => {
     return (items, documentType) => {
