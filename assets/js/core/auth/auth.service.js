@@ -102,6 +102,10 @@ angular.module('core.auth')
         {
           update: {
             method: 'PUT'
+          },
+          query: {
+            url: '/user/count',
+            isArray: false
           }
         }
       );

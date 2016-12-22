@@ -10,18 +10,20 @@ angular.module('app.users', [])
         skip: tableState.pagination.start || 0
       };
 
-      User.query(angular.extend(pagination, {isDeleted: false})).$promise
-        .then((items) => {
-          vm.items = items;
-          angular.copy(items, vm.safeItemsCollection);
-          tableState.pagination.numberOfPages = 2;
+      User
+        .query(angular.extend(pagination, {isDeleted: false}))
+        .$promise
+        .then((pagedResponse) => {
+          vm.items = pagedResponse.data;
+          angular.copy(pagedResponse.data, vm.safeItemsCollection);
+          tableState.pagination.numberOfPages = Math.ceil(pagedResponse.count / tableState.pagination.number) || 1;
         })
         .finally(() => {
           $scope.isLoading = false;
         });
     };
     $scope.safeItemsCollection = [];
-    $scope.availableRoles = {
+    vm.availableRoles = {
       'operator': 'Оператор',
       'admin': 'Администратор',
     };
