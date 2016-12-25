@@ -125,7 +125,7 @@ angular.module('app').config(function($stateProvider,$httpProvider) {
       parent: 'layout',
       url:'/contragents',
       templateUrl:'/js/contragents/partials/list.html',
-      controller:'ContragentListController'
+      controller:'ContragentListController as vm'
     })
     .state('contragents-edit',{
       parent: 'layout',
@@ -145,7 +145,7 @@ angular.module('app').config(function($stateProvider,$httpProvider) {
         parent: 'layout',
         url:'/contragentgroups',
         templateUrl:'/js/contragentgroups/partials/list.html',
-        controller:'ContragentGroupListController'
+        controller:'ContragentGroupListController as vm'
     })
     .state('contragentgroups-edit',{
         url:'/contragentgroups/:id/edit',

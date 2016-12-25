@@ -13,7 +13,7 @@
       </ol>
       <a ui-sref="contragents-new" type="button" class="btn btn-success">Добавить</a>
       <div class="table-responsive">
-        <table class="table table-hover table-striped">
+        <table class="table table-hover table-striped" st-table="vm.items" st-safe-src="vm.safeItemsCollection" st-pipe="vm.loadItems">
           <thead>
           <tr>
             <th>Название</th>
@@ -25,16 +25,21 @@
             <th></th>
           </tr>
           </thead>
-          <tbody>
-          <tr ng-repeat="contragent in this.items">
-            <td><a ui-sref="contragents-edit({ id: contragent.id })">{{contragent.name}}</a></td>
-            <td>{{contragent.inn}}</td>
-            <td>{{contragent.ogrn}}</td>
-            <td>{{contragent.phone}}</td>
-            <td>{{contragent.email}}</td>
-            <td>{{contragent.group.name}}</td>
-            <td><a class="btn btn-danger"  ng-click="delete(contragent)">Удалить</a></td>
-          </tr>
+          <tbody ng-show="vm.isLoading">
+            <tr>
+              <td colspan="7" class="text-center">Загрузка..</td>
+            </tr>
+          </tbody>
+          <tbody ng-show="!vm.isLoading">
+            <tr ng-repeat="contragent in vm.items">
+              <td><a ui-sref="contragents-edit({ id: contragent.id })">{{contragent.name}}</a></td>
+              <td>{{contragent.inn}}</td>
+              <td>{{contragent.ogrn}}</td>
+              <td>{{contragent.phone}}</td>
+              <td>{{contragent.email}}</td>
+              <td>{{contragent.group.name}}</td>
+              <td><a class="btn btn-danger"  ng-click="vm.delete(contragent)">Удалить</a></td>
+            </tr>
           </tbody>
         </table>
       </div>

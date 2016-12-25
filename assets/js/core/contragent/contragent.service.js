@@ -10,6 +10,10 @@ angular.
         {
           update: {
             method: 'PUT'
+          },
+          query: {
+            url: '/contragent/count',
+            isArray: false
           }
         }
       );
@@ -23,6 +27,10 @@ angular.
           {
             update: {
               method: 'PUT'
+            },
+            query: {
+              url: '/contragentgroup/count',
+              isArray: false
             }
           }
         );

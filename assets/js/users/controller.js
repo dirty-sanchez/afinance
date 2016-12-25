@@ -6,7 +6,7 @@ angular.module('app.users', [])
     vm.items = [];
     vm.loadItems = (tableState) => {
       let pagination = {
-        limit: tableState.pagination.number || 5,
+        limit: tableState.pagination.number || 10,
         skip: tableState.pagination.start || 0
       };
 
@@ -19,16 +19,16 @@ angular.module('app.users', [])
           tableState.pagination.numberOfPages = Math.ceil(pagedResponse.count / tableState.pagination.number) || 1;
         })
         .finally(() => {
-          $scope.isLoading = false;
+          vm.isLoading = false;
         });
     };
-    $scope.safeItemsCollection = [];
+    vm.safeItemsCollection = [];
     vm.availableRoles = {
       'operator': 'Оператор',
       'admin': 'Администратор',
     };
-    $scope.isLoading = true;
-    $scope.delete = function(item) {
+    vm.isLoading = true;
+    vm.delete = function(item) {
       item.$delete(vm.loadItems);
     };
   })

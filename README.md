@@ -1,3 +1,4 @@
 # afinance2
+Small CRM system for one customer.
 
-a [Sails](http://sailsjs.org) application
+Trying sailsjs and angular 1 here.

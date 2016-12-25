@@ -12,6 +12,8 @@ module.exports = {
 
     name : { type: 'string' },
 
+    isDeleted: { type: 'boolean', defaultsTo: false },
+
     contragents: {
       model: 'contragent',
       via: 'group'

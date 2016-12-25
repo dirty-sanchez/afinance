@@ -2,11 +2,32 @@
 
 angular.module('app.contragents', [])
   .controller('ContragentListController', function($scope, $state, $window, Contragent) {
-    $scope.items = Contragent.query();
-    $scope.delete = function(contragent) {
-       contragent.$delete(function() {
-          $scope.items = Contragent.query();
-       });
+    var vm = this;
+
+    vm.items = [];
+    vm.safeItemsCollection = [];
+    vm.loadItems = (tableState) => {
+      let pagination = {
+        limit: tableState.pagination.number || 10,
+        skip: tableState.pagination.start || 0
+      };
+
+      Contragent
+        .query(angular.extend(pagination, {isDeleted: false}))
+        .$promise
+        .then((pagedResponse) => {
+          vm.items = pagedResponse.data;
+          angular.copy(pagedResponse.data, vm.safeItemsCollection);
+          tableState.pagination.numberOfPages = Math.ceil(pagedResponse.count / tableState.pagination.number) || 1;
+        })
+        .finally(() => {
+          vm.isLoading = false;
+        });
+    };
+
+    vm.isLoading = true;
+    vm.delete = function(item) {
+      item.$delete(vm.loadItems);
     };
   })
   .controller('ContragentEditController', function($scope, $state, $stateParams, Contragent, ContragentGroup) {

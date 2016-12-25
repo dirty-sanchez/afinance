@@ -20,14 +20,14 @@
           </thead>
           <tbody ng-show="vm.isLoading">
             <tr>
-              <td colspan="3" class="text-center">Loading..</td>
+              <td colspan="3" class="text-center">Загрузка..</td>
             </tr>
           </tbody>
           <tbody ng-show="!vm.isLoading">
             <tr ng-repeat="item in vm.items">
               <td><a ui-sref="users-edit({ id: item.id })">{{item.username}}</a></td>
               <td>{{ vm.availableRoles[item.role] }}</td>
-              <td><a class="btn btn-danger"  ng-click="delete(item)">Удалить</a></td>
+              <td><a class="btn btn-danger"  ng-click="vm.delete(item)">Удалить</a></td>
             </tr>
           </tbody>
           <tfoot>

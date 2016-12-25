@@ -35,6 +35,8 @@ module.exports = {
 
     bank_corr_account_nr: { type: 'string', defaultsTo: '' },
 
+    isDeleted: { type: 'boolean', defaultsTo: false },
+
     group: {
       model: 'contragentgroup',
       defaultsTo: 1
