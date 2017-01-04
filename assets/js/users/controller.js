@@ -1,33 +1,14 @@
 "use strict";
 
 angular.module('app.users', [])
-  .controller('UserListController', function($scope, $state, $window, User) {
+  .controller('UserListController', function($scope, $state, $window, User, ItemsPagedLoaderMixin) {
     var vm = this;
-    vm.items = [];
-    vm.loadItems = (tableState) => {
-      let pagination = {
-        limit: tableState.pagination.number || 10,
-        skip: tableState.pagination.start || 0
-      };
 
-      User
-        .query(angular.extend(pagination, {isDeleted: false}))
-        .$promise
-        .then((pagedResponse) => {
-          vm.items = pagedResponse.data;
-          angular.copy(pagedResponse.data, vm.safeItemsCollection);
-          tableState.pagination.numberOfPages = Math.ceil(pagedResponse.count / tableState.pagination.number) || 1;
-        })
-        .finally(() => {
-          vm.isLoading = false;
-        });
-    };
-    vm.safeItemsCollection = [];
+    ItemsPagedLoaderMixin.extendScope(vm, User, {isDeleted: false});
     vm.availableRoles = {
       'operator': 'Оператор',
       'admin': 'Администратор',
     };
-    vm.isLoading = true;
     vm.delete = function(item) {
       item.$delete(vm.loadItems);
     };

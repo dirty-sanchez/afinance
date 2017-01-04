@@ -24,10 +24,8 @@ const defaultCountBlueprint = function(req, res) {
   fetchQuery = actionUtil.populateRequest(query, req);
   Promise.all([countQuery, fetchQuery])
     .then(function(results) {
-      return res.ok({
-        count: results[0],
-        data: results[1]
-      });
+      res.set('X-Total-Count', results[0]);
+      return res.ok(results[1]);
     })
     .catch(function(errorData) {
       throw Error(errorData);
@@ -52,7 +50,7 @@ module.exports = function (sails) {
             baseRoute = pluralize(baseRoute);
           }
 
-          var route = baseRoute + '/count';
+          var route = baseRoute + '/pagedQuery';
 
           sails.router.bind(route, countFn, null, {controller: model.identity});
         });

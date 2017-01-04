@@ -103,9 +103,10 @@ angular.module('core.auth')
           update: {
             method: 'PUT'
           },
-          query: {
-            url: '/user/count',
-            isArray: false
+          pagedQuery: {
+            method: 'GET',
+            isArray: true,
+            url: '/user/pagedQuery'
           }
         }
       );
