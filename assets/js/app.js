@@ -105,7 +105,7 @@ angular.module('app').config(function($stateProvider,$httpProvider) {
       parent: 'layout',
       url: '/documents',
       templateUrl: '/js/documents/partials/list.html',
-      controller: 'DocumentListController'
+      controller: 'DocumentListController as vm'
     })
     .state('documents-edit', {
       parent: 'layout',

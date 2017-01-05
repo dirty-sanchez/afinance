@@ -10,7 +10,9 @@ angular.module('app.users', [])
       'admin': 'Администратор',
     };
     vm.delete = function(item) {
-      item.$delete(vm.loadItems);
+      item.$delete(() => {
+        vm.loadItems();
+      });
     };
   })
   .controller('UserAddEditController', function($scope, $state, $stateParams, User) {

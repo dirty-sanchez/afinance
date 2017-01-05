@@ -1,12 +1,11 @@
 "use strict";
 
 angular.module('app.documents', [])
-  .controller('DocumentListController', function($scope, $state, $window, Document) {
-    $scope.items = Document.query({sort: 'createdAt DESC'});
-    $scope.delete = function(item) {
-       item.$delete(function() {
-          $scope.items = Document.query({sort: 'createdAt DESC'});
-       });
+  .controller('DocumentListController', function($scope, $state, $window, Document, ItemsPagedLoaderMixin) {
+    var vm = this;
+    ItemsPagedLoaderMixin.extendScope(vm, Document, {sort: 'createdAt DESC'});
+    vm.delete = function(item) {
+       item.$delete(vm.loadItems);
     };
   })
   .controller('DocumentAddEditController', function($scope, $state, $stateParams, Document, DocumentType, Division, Position) {

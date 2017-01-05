@@ -17,6 +17,7 @@ angular
         vm.isLoading = true;
         queryOptions = queryOptions || {};
         vm.loadItems = function(tableState) {
+          tableState = tableState || {pagination: {number: null, start: null}};
           let pagination = {
             limit: tableState.pagination.number || 10,
             skip: tableState.pagination.start || 0

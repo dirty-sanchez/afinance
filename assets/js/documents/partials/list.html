@@ -13,7 +13,7 @@
       </ol>
       <a ui-sref="documents-new" type="button" class="btn btn-success">Добавить</a>
       <div class="table-responsive">
-        <table class="table table-hover table-striped">
+        <table class="table table-hover table-striped" st-table="vm.itemsList" st-pipe="vm.loadItems">
           <thead>
           <tr>
             <th>Номер документа</th>
@@ -23,14 +23,19 @@
             <th></th>
           </tr>
           </thead>
-          <tbody>
-          <tr ng-repeat="item in this.items">
-            <td><a ui-sref="documents-edit({ id: item.id })">{{item.number || "<БЕЗ НОМЕРА>"}}</a></td>
-            <td><a ui-sref="documents-edit({ id: item.id })">{{item.documentType.name || "<БЕЗ ИМЕНИ>"}}</a></td>
-            <td><a ui-sref="divisions-edit({ id: item.division.id })">{{item.division.name || '<БЕЗ ИМЕНИ>'}}</a></td>
-            <td>{{item.updatedAt | date: 'HH:mm:ss dd.MM.yy'}}</td>
-            <td><a class="btn btn-danger"  ng-click="delete(item)">Удалить</a></td>
+          <tbody ng-show="vm.isLoading">
+          <tr>
+            <td colspan="5" class="text-center">Загрузка..</td>
           </tr>
+          </tbody>
+          <tbody ng-show="!vm.isLoading">
+            <tr ng-repeat="item in vm.items">
+              <td><a ui-sref="documents-edit({ id: item.id })">{{item.number || "<БЕЗ НОМЕРА>"}}</a></td>
+              <td><a ui-sref="documents-edit({ id: item.id })">{{item.documentType.name || "<БЕЗ ИМЕНИ>"}}</a></td>
+              <td><a ui-sref="divisions-edit({ id: item.division.id })">{{item.division.name || '<БЕЗ ИМЕНИ>'}}</a></td>
+              <td>{{item.updatedAt | date: 'HH:mm:ss dd.MM.yy'}}</td>
+              <td><a class="btn btn-danger"  ng-click="vm.delete(item)">Удалить</a></td>
+            </tr>
           </tbody>
         </table>
       </div>

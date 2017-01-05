@@ -10,6 +10,11 @@ angular.
         {
           update: {
             method: 'PUT'
+          },
+          pagedQuery: {
+            method: 'GET',
+            isArray: true,
+            url: '/document/pagedQuery'
           }
         }
       );
@@ -23,6 +28,11 @@ angular.
         {
           update: {
             method: 'PUT'
+          },
+          pagedQuery: {
+            method: 'GET',
+            isArray: true,
+            url: '/documenttype/pagedQuery'
           }
         }
       );
